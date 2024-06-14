@@ -130,7 +130,7 @@ function Mentor() {
                 <img
                   loading="lazy"
                   srcSet={Mentor1}
-                  className="aspect-square w-[50px]"
+                  className="aspect-square w-[50px]" alt=""
                 />
                 <div className="mt-4 text-2xl font-bold leading-8 max-md:max-w-full">
                   Berbagi Pengetahuan dan Pengalaman
@@ -147,7 +147,7 @@ function Mentor() {
                 <img
                   loading="lazy"
                   srcSet={Mentor2}
-                  className="aspect-square w-[50px]"
+                  className="aspect-square w-[50px]" alt=""
                 />
                 <div className="mt-4 text-2xl font-bold leading-8 max-md:max-w-full">
                   Mendapatkan Penghargaan dan Kepuasan
@@ -167,7 +167,7 @@ function Mentor() {
                 <img
                   loading="lazy"
                   srcSet={Mentor3}
-                  className="aspect-square w-[50px]"
+                  className="aspect-square w-[50px]" alt=""
                 />
                 <div className="mt-4 text-2xl font-bold leading-9">
                   Mengembangkan Kemampuan Komunikasi dan Kepemimpinan
@@ -184,7 +184,7 @@ function Mentor() {
                 <img
                   loading="lazy"
                   srcSet={Mentor4}
-                  className="aspect-square w-[50px]"
+                  className="aspect-square w-[50px]" alt=""
                 />
                 <div className="mt-4 text-2xl font-bold leading-9">
                   Membentuk Jaringan Profesional yang Luas
@@ -202,7 +202,7 @@ function Mentor() {
                 <img
                   loading="lazy"
                   srcSet={Mentor5}
-                  className="aspect-square w-[50px]"
+                  className="aspect-square w-[50px]" alt=""
                 />
                 <div className="mt-4 text-2xl font-bold leading-9">
                   Memberikan Dampak Positif pada Komunitas Bisnis

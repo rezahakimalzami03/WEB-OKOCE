@@ -1,5 +1,5 @@
 import React from 'react';
-import ModalHeader from "@img/Modal7Top.jpg";
+import ModalHeader from "@img/modal7top.png";
 
 const ModalStep2 = ({ onNext }) => {
     return (

@@ -52,7 +52,7 @@ function App() {
           <Route path="/penggerak" element={<Penggerak />} />
           <Route path="/anniversary" element={<Anniversary />} />
           <Route path="/7top" element={<Seventop />} />
-          <Route path="/merchendise" element={<Merchendise />} />
+          <Route path="/merchandise" element={<Merchendise />} />
           <Route path="/pendampingan" element={<Pendampingan />} />
           <Route path="/pelatihan" element={<Pelatihan />} />
           <Route path="/faq" element={<Faq />} />

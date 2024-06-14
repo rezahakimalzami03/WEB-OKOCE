@@ -210,7 +210,7 @@ function Navbar() {
                       <a
                         href="/merchendise"
                         className="camelcase block px-4 py-2 hover:bg-gray-100 hover:bg-gray-400 hover:text-black">
-                        Merchendise
+                        Merchandise
                       </a>
                     </li>
                   </ul>
@@ -309,7 +309,7 @@ function Navbar() {
                       <a
                         href="/event"
                         className="camelcase block px-4 py-2 hover:bg-gray-100 hover:bg-gray-400 hover:text-black">
-                        Daftar event
+                        Daftar Event
                       </a>
                     </li>
                     <li>
@@ -543,9 +543,9 @@ function Navbar() {
                     aria-labelledby="dropdownEtalaseNavbarLink">
                     <li>
                       <a
-                        href="/merchendise"
+                        href="/merchandise"
                         className="camelcase block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
-                        Merchendise
+                        Merchandise
                       </a>
                     </li>
                   </ul>
