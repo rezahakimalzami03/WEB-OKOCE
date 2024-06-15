@@ -448,13 +448,13 @@ const Homepage = () => {
                                 ))}
                             </div>
                         </div>
-                        <div class="text-xl font-bold mobile:p-4 mobile:mt-14 mobile:text-center lg:w-[59%] lg:text-start lg:p-0 lg:mt-6">
+                        <div class="text-xl font-bold mobile:p-4 mobile:mt-14 mobile:text-center lg:w-[64%] lg:text-start lg:p-0 lg:mt-6">
                             Daftar Berita
                             <div class="grid gap-4 mt-4 mobile:grid-cols-1 mobile:grid-flow-row lg:grid-cols-3 lg:grid-flow-col">
                                 {datas.map((data) => (
                                     <div className="border-2 border-black p-2">
                                         <img
-                                            class="object-cover mobile:max-w-40 mobile:h-auto lg:h-full lg:max-w-40"
+                                            class="object-cover mobile:max-w-40 mobile:h-auto lg:h-full lg:w-40"
                                             src={data.attributes.foto_berita.data.attributes.url}
                                         />
                                     </div>
