@@ -37,10 +37,10 @@ const Desapreneur = () => {
         <div className="text-5xl ml-8 font-bold text-black leading-[57.6px] max-md:max-w-full max-md:text-4xl">
           Tujuan Program
         </div>
-        <div className="mt-12 text-lg ml-8 leading-4 text-neutral-700 max-md:mt-10 max-md:max-w-full">
+        <div className="mt-12 text-lg ml-8 leading-7 text-neutral-700 max-md:mt-10 max-md:max-w-full">
           Program Desa Preuner Bertujuan Untuk:
         </div>
-        <div className="mt-11 max-md:mt-10 max-md:mr-2 max-md:max-w-full">
+        <div className="mt-10 max-md:mt-10 max-md:mr-2 max-md:max-w-full">
           <div className="flex flex-wrap justify-center gap-5 max-md:flex-col max-md:gap-0">
             <div className="flex flex-col max-w-[581px] w-full">
               <div className="flex flex-col grow py-9 px-10 w-full text-2xl leading-9 text-justify text-black bg-white rounded-3xl border border-indigo-800 border-solid shadow-sm max-md:px-5 max-md:mt-10">

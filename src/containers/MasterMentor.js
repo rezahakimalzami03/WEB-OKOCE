@@ -178,11 +178,11 @@ const MasterMentor = () => {
                     <div className="text-5xl font-bold text-black leading-[57.6px] max-md:max-w-full max-md:text-4xl">
                         Benefit Pelatihan
                     </div>
-                    <div className="mt-8 text-lg leading-4 text-neutral-700 max-md:max-w-full">
+                    <div className="mt-8 text-lg leading-7 text-neutral-700 max-md:max-w-full">
                         Yuk upgrade diri dan usahamu dengan mengikuti pelatihan khusus
                         Pendamping Penggerak OK OCE:
                     </div>
-                    <div className="mt-14 max-md:mt-10 max-md:max-w-full">
+                    <div className="mt-10 max-md:mt-10 max-md:max-w-full">
                         <div className="flex gap-5 max-md:flex-col max-md:gap-0">
                             <div className="flex flex-col w-6/12 max-md:ml-0 max-md:w-full">
                                 <div className="flex flex-col grow px-10 py-6 w-full text-black bg-white rounded-3xl border border-indigo-800 border-solid shadow-sm max-md:px-5 max-md:mt-10 max-md:max-w-full">

@@ -93,12 +93,12 @@ const Trainer = () => {
                         <div className="text-5xl font-bold text-black leading-[57.6px] max-md:max-w-full max-md:text-4xl">
                             Benefit Menjadi Trainer
                         </div>
-                        <div className="mt-8 text-lg leading-4 text-neutral-700 max-md:max-w-full">
+                        <div className="mt-8 text-lg leading- 7text-neutral-700 max-md:max-w-full">
                             Menjadi trainer memberikan kesempatan untuk berbagi pengetahuan,
                             memperluas jaringan profesional, dan merasa puas melihat
                             perkembangan peserta.
                         </div>
-                        <div className="mt-16 max-md:mt-10 max-md:max-w-full">
+                        <div className="mt-12 max-md:mt-10 max-md:max-w-full">
                             <div className="flex gap-5 max-md:flex-col max-md:gap-0">
                                 <div className="flex flex-col w-6/12 max-md:ml-0 max-md:w-full">
                                     <div className="flex flex-col grow px-10 py-6 w-full text-black bg-white rounded-3xl border border-indigo-800 border-solid shadow-sm max-md:px-5 max-md:mt-10 max-md:max-w-full">

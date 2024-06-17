@@ -20,7 +20,7 @@ const FloatingMenu = () => {
           <img
             src={Arrow}
             alt="Arrow"
-            className={`mobile:ml-0 lg:ml-10 mobile:w-10 lg:w-10 h-auto transition-transform duration-300 ease-in-out ${isHovered ? 'mobile:-translate-x-7 lg:-translate-x-16' : ''}`}
+            className={`mobile:ml-0 mobile:w-10 lg:ml-10 lg:w-10 h-auto transition-transform duration-300 ease-in-out ${isHovered ? 'mobile:-translate-x-0 lg:-translate-x-16' : ''}`}
           />
         </div>
         <div
@@ -29,7 +29,7 @@ const FloatingMenu = () => {
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
         >
-          <div className="mb-3">
+          <div className="mb-3 mobile:pr-7 lg:pr-0">
             <a
               href="https://www.facebook.com/profile.php?id=100064564037361"
               target="_blank"
@@ -38,7 +38,7 @@ const FloatingMenu = () => {
               <img src={Fb} className="w-8 md:w-10 lg:w-9 lg:ml-1" alt="Facebook" />
             </a>
           </div>
-          <div className="mb-3">
+          <div className="mb-3 mobile:pr-7 lg:pr-0">
             <a
               href="https://instagram.com/okoce.indonesia"
               target="_blank"
@@ -47,16 +47,16 @@ const FloatingMenu = () => {
               <img src={IG} className="w-8 md:w-10 lg:w-10 lg:ml-1" alt="Instagram" />
             </a>
           </div>
-          <div className="mb-3">
+          <div className="mb-3 mobile:pr-7 lg:pr-0">
             <a
               href="https://www.tiktok.com/@okoceindonesia"
               target="_blank"
               rel="noopener noreferrer"
             >
-              <img src={Tiktok} className="w-9 mobile:mr-2 md:w-10 lg:w-12" alt="Tiktok" />
+              <img src={Tiktok} className="mobile:mr-2 mobile:w-full lg:w-12" alt="Tiktok" />
             </a>
           </div>
-          <div>
+          <div className="mobile:pr-7 lg:pr-0">
             <a
               href="https://www.youtube.com/channel/UCrXYetY5iBgnFnNKCVYzihw"
               target="_blank"
