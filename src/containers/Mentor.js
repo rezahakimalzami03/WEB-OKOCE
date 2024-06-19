@@ -115,10 +115,10 @@ function Mentor() {
 
       {/* Benefit menjadi mentor */}
       <div className="flex flex-col ml-3 mr-3 mb-10 px-11 pt-2.5 pb-4 max-md:px-5">
-        <div className="text-5xl font-bold text-black leading-[57.6px] max-md:max-w-full max-md:text-4xl">
+        <div className="text-4xl font-bold text-black leading-[57.6px] max-md:max-w-full max-md:text-4xl">
           Benefit Menjadi Mentor
         </div>
-        <div className="mt-8 text-lg leading-4 text-neutral-700 max-md:max-w-full">
+        <div className="mt-8 text-lg leading-7 text-neutral-700 max-md:max-w-full">
           Menjadi trainer memberikan kesempatan untuk berbagi pengetahuan,
           memperluas jaringan profesional, dan merasa puas melihat perkembangan
           peserta.

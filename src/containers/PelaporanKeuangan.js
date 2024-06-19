@@ -44,7 +44,7 @@ const PelaporanKeuangan = () => {
                     <div className="flex w-10/12 pb-10 items-center border-b-4 border-white mobile:flex-col mobile:mt-8 mobile:mx-auto lg:ml-16">
                         <img class="object-cover mobile:w-28 lg:h-24 lg:w-54" src={Image1} alt="" />
                         <p className="ml-16 text-justify mobile:ml-0 mobile:mt-6">
-                            "Wajar Tanpa Pengecualian" (WTP) adalah opini tertinggi yang diberikan oleh auditor independen dalam laporan audit keuangan. Ini berarti bahwa laporan keuangan suatu entitas, seperti perusahaan atau pemerintah, dianggap telah disusun dan disajikan secara wajar dalam semua hal yang material sesuai dengan prinsip akuntansi yang berlaku umum.</p>
+                            Akuntansiku dalam pencatatan keuangan mencakup proses sistematis pengumpulan, pencatatan, dan analisis transaksi keuangan untuk memastikan laporan keuangan yang akurat dan transparan. Melalui penggunaan prinsip-prinsip akuntansi yang tepat, saya bertanggung jawab untuk mencatat semua pendapatan, pengeluaran, aset, dan kewajiban guna memberikan gambaran yang jelas tentang kondisi keuangan entitas, serta mendukung pengambilan keputusan yang informatif dan strategis.</p>
                     </div>
                 </div>
             </div>

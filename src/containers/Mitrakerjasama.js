@@ -255,7 +255,7 @@ const Mitrakerjasama = () => {
                         <div class="lg:mt-0 text-lg flex flex-col flex-grow pl-4 justify-center items-center">
                             <p className="font-bold text-2xl mb-4">200</p>
                             <div class="mobile:pb-0 lg:pb-5">
-                                <h3 class="text-black text-justify font-medium">
+                                <h3 class="text-black text-center font-medium">
                                     Mitra Kerjasama Penggerak
                                 </h3>
                             </div>

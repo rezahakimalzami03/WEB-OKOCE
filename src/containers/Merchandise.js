@@ -114,7 +114,7 @@ const Merchandise = () => {
                                 </div>
 
                                 <div className="w-full lg:w-2/3 pl-0 lg:py-10 lg:px-10 font-poppins flex flex-col justify-between">
-                                    <div className="flex flex-wrap">
+                                    <div className="mobile:flex-row lg:flex lg:flex-wrap">
                                         <a className="flex-auto text-xl font-semibold text-black">
                                             {item.judul}
                                         </a>

@@ -34,16 +34,16 @@ const Desapreneur = () => {
 
       {/* Tujuan */}
       <div className="flex flex-col ml-5 mr-5 mt-5 px-11 py-10 max-md:px-5">
-        <div className="text-5xl ml-8 font-bold text-black leading-[57.6px] max-md:max-w-full max-md:text-4xl">
+        <div className="text-5xl font-bold text-black leading-[57.6px] max-md:max-w-full max-md:text-4xl lg:ml-7">
           Tujuan Program
         </div>
-        <div className="mt-12 text-lg ml-8 leading-7 text-neutral-700 max-md:mt-10 max-md:max-w-full">
+        <div className="mt-12 text-lg leading-7 text-neutral-700 max-md:mt-10 max-md:max-w-full lg:ml-8">
           Program Desa Preuner Bertujuan Untuk:
         </div>
         <div className="mt-10 max-md:mt-10 max-md:mr-2 max-md:max-w-full">
           <div className="flex flex-wrap justify-center gap-5 max-md:flex-col max-md:gap-0">
             <div className="flex flex-col max-w-[581px] w-full">
-              <div className="flex flex-col grow py-9 px-10 w-full text-2xl leading-9 text-justify text-black bg-white rounded-3xl border border-indigo-800 border-solid shadow-sm max-md:px-5 max-md:mt-10">
+              <div className="flex flex-col grow py-9 px-10 w-full text-2xl leading-9 text-start text-black bg-white rounded-3xl border border-indigo-800 border-solid shadow-sm max-md:px-5 max-md:mt-10">
                 <img
                   loading="lazy"
                   src={TUJUAND1}
@@ -55,7 +55,7 @@ const Desapreneur = () => {
               </div>
             </div>
             <div className="flex flex-col max-w-[581px] w-full">
-              <div className="flex flex-col grow py-9 px-10 w-full text-2xl leading-9 text-justify text-black bg-white rounded-3xl border border-indigo-800 border-solid shadow-sm max-md:px-5 max-md:mt-10">
+              <div className="flex flex-col grow py-9 px-10 w-full text-2xl leading-9 text-start text-black bg-white rounded-3xl border border-indigo-800 border-solid shadow-sm max-md:px-5 max-md:mt-10">
                 <img
                   loading="lazy"
                   src={TUJUAND2}
@@ -68,7 +68,7 @@ const Desapreneur = () => {
               </div>
             </div>
             <div className="flex flex-col max-w-[581px] w-full">
-              <div className="flex flex-col grow py-9 px-10 w-full text-2xl leading-9 text-justify text-black bg-white rounded-3xl border border-indigo-800 border-solid shadow-sm max-md:px-5 max-md:mt-10">
+              <div className="flex flex-col grow py-9 px-10 w-full text-2xl leading-9 text-start text-black bg-white rounded-3xl border border-indigo-800 border-solid shadow-sm max-md:px-5 max-md:mt-10">
                 <img
                   loading="lazy"
                   src={TUJUAND3}
@@ -80,7 +80,7 @@ const Desapreneur = () => {
               </div>
             </div>
             <div className="flex flex-col max-w-[581px] w-full">
-              <div className="flex flex-col grow py-9 px-10 w-full text-2xl leading-9 text-justify text-black bg-white rounded-3xl border border-indigo-800 border-solid shadow-sm max-md:px-5 max-md:mt-10">
+              <div className="flex flex-col grow py-9 px-10 w-full text-2xl leading-9 text-start text-black bg-white rounded-3xl border border-indigo-800 border-solid shadow-sm max-md:px-5 max-md:mt-10">
                 <img
                   loading="lazy"
                   src={TUJUAND4}
@@ -93,7 +93,7 @@ const Desapreneur = () => {
             </div>
           </div>
         </div>
-        <div className="flex flex-col self-center py-9 px-10 mt-11 max-w-[581px] w-full text-2xl leading-9 text-justify text-black bg-white rounded-3xl border border-indigo-800 border-solid shadow-sm max-md:px-5 max-md:mt-10">
+        <div className="flex flex-col self-center py-9 px-10 mt-11 max-w-[581px] w-full text-2xl leading-9 text-start text-black bg-white rounded-3xl border border-indigo-800 border-solid shadow-sm max-md:px-5 max-md:mt-10">
           <img loading="lazy" src={TUJUAND5} className="w-10 aspect-square" />
           <div className="mt-4 max-md:max-w-full">Meningkatkan Daya Saing</div>
         </div>

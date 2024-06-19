@@ -112,7 +112,7 @@ const Emakkece = () => {
                 </div>
             </div>
 
-            <div class="bg-white-300 w-full h-[20rem] grid justify-center content-center mobile:mt-52 mobile:mb-[30rem] lg:mt-10 lg:mb-10">
+            <div class="bg-white-300 w-full h-[20rem] grid justify-center content-center mobile:mt-52 mobile:mb-64 lg:mt-10 lg:mb-10">
                 <h1 class="font-extrabold py-5 text-4xl text-center">SUMBER DAYA</h1>
                 <div class="flex justify-center">
                     <div class="grid gap-4 mobile:grid-cols-1 lg:grid-cols-4">
@@ -132,14 +132,11 @@ const Emakkece = () => {
                 </div>
             </div>
 
-
-            <div class="mt-[5rem] bg-white-300 w-full h-[50rem] grid justify-center content-center mobile:mb-[20rem] lg:mb-0">
+            <div class="bg-white-300 w-full h-[50rem] grid justify-center content-center mobile:mb-10 lg:mt-36 lg:mb-0">
                 <h1 class="font-extrabold text-4xl text-center">TAHAPAN</h1>
                 <div class="flex justify-center">
                     <div class="grid grid-cols-1 gap-4">
-                        <div class="mt-1">
-                            <img class="h-[40em]" src={TAHAPAN} />
-                        </div>
+                        <img class="w-full h-auto" src={TAHAPAN} />
                     </div>
                 </div>
             </div>
