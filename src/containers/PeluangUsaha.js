@@ -6,14 +6,14 @@ import FloatingMenu from "../components/FloatingMenu";
 const cardClasses = 'bg-white p-4 rounded-lg shadow-md flex items-start cursor-pointer';
 
 const JobCard = ({ logo, title, location, job_system, category, onClick }) => {
-    const logoUrl = logo ? `http://localhost:1337${logo}` : '/fallback-logo.jpg'; // Tambahkan domain API dan fallback
+    const logoUrl = logo ? `https://websapa.biz.id${logo}` : '/fallback-logo.jpg';
     return (
         <div className={cardClasses} onClick={onClick}>
             <img
                 src={logoUrl}
                 alt="Company Logo"
                 className="w-20 max-h-20 mr-4 object-cover rounded-full"
-                onError={(e) => { e.target.src = '/fallback-logo.jpg'; }} // Fallback jika gambar gagal dimuat
+                onError={(e) => { e.target.src = '/fallback-logo.jpg'; }} // Gambar fallback
             />
             <div>
                 <h3 className="text-lg font-semibold">{title}</h3>
@@ -40,7 +40,7 @@ const JobList = ({ onJobClick }) => {
 
     const fetchDataPeluangUsaha = async () => {
         try {
-            const response = await fetch('http://localhost:1337/api/peluang-usahas?populate=*');
+            const response = await fetch('https://cms-okoce-6629e06db84b.herokuapp.com/api/peluang-usahas?populate=*');
             if (!response.ok) {
                 throw new Error('Gagal mengambil data peluang usaha');
             }
@@ -61,7 +61,7 @@ const JobList = ({ onJobClick }) => {
                 <div className="mt-0" key={data.id}>
                     <div className="space-y-4 mt-5">
                         <JobCard
-                            logo={data.attributes?.foto_usaha?.data?.[0]?.attributes?.url}
+                            logo={data.attributes?.foto_usaha?.data?.[0]?.attributes?.url || null}
                             title={data.attributes?.judul_usaha}
                             location={data.attributes?.lokasi_usaha}
                             job_system={data.attributes?.sistem_kerja}
@@ -87,7 +87,7 @@ const PeluangUsaha = () => {
 
     const fetchJobDetails = async (id) => {
         try {
-            const response = await fetch(`http://localhost:1337/api/peluang-usahas/${id}?populate=*`);
+            const response = await fetch(`https://cms-okoce-6629e06db84b.herokuapp.com/api/peluang-usahas/${id}?populate=*`);
             if (!response.ok) {
                 throw new Error('Gagal mengambil detail peluang usaha');
             }
@@ -121,7 +121,11 @@ const PeluangUsaha = () => {
                     {jobDetails ? (
                         <div className="w-full h-full text-zinc-400">
                             <div className="mobile:ml-0 mobile:px-4 lg:mt-10 lg:ml-2 lg:pr-16 lg:pl-14">
-                                <img src={jobDetails.attributes?.foto_usaha?.data?.[0]?.attributes?.url ? `http://localhost:1337${jobDetails?.attributes?.foto_usaha?.data?.[0]?.attributes?.url}` : '/fallback-image.jpg'}
+                                <img src={
+                                    jobDetails.attributes?.foto_usaha?.data?.length > 0
+                                        ? `https://websapa.biz.id${jobDetails.attributes?.foto_usaha?.data[0]?.attributes?.url}`
+                                        : "https://via.placeholder.com/150" // Placeholder image
+                                }
                                     alt={jobDetails.attributes.judul_usaha || 'Peluang Usaha'}
                                     className="w-full object-cover rounded-full mobile:h-56 mobile:mt-8 lg:h-96"
                                     onError={(e) => { e.target.src = '/fallback-image.jpg'; }} // Fallback jika error

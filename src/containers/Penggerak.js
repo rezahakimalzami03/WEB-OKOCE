@@ -13,7 +13,7 @@ const Penggerak = () => {
 
     const fetchPenggerak = async () => {
         try {
-            const response = await fetch('http://localhost:1337/api/penggerak-okoces?populate=*');
+            const response = await fetch('https://cms-okoce-6629e06db84b.herokuapp.com/api/penggerak-okoces?populate=*');
             if (!response.ok) {
                 throw new Error('Gagal mengambil data penggerak');
             }
@@ -48,22 +48,18 @@ const Penggerak = () => {
                 <div class="container w-4/5 mx-auto mx-auto p-4">
                     <div class="grid mobile:grid-cols-1 mobile:gap-6 sm:grid-cols-2 md:grid-cols-3 lg:gap-8 lg:grid-cols-3">
                         {/* <!-- Replace this with your grid items --> */}
-                        {penggerak.map((penggerak) => {
-                            const imageUrl = penggerak?.attributes?.foto_penggerak?.data?.[0]?.attributes?.url
-                                ? `http://localhost:1337${penggerak.attributes.foto_penggerak.data[0].attributes.url}`
-                                : "/fallback-image.jpg";
-                            return (
-                                <div class="bg-white rounded-lg border drop-shadow-xl p-4">
-                                    <img className="min-h-60 max-h-60 min-w-40 mx-auto" src={imageUrl} alt={penggerak.attributes.nama_penggerak} />
-                                    <div class="px-1 py-4">
-                                        <div class="font-bold text-xl mb-2">{penggerak.attributes.nama_penggerak}</div>
-                                        <p class="text-gray-700 text-base">
-                                            {penggerak.attributes.deskripsi_penggerak}
-                                        </p>
-                                    </div>
+                        {penggerak.map((penggerak) => (
+                            <div class="bg-white rounded-lg border drop-shadow-xl p-4">
+                                <img className="min-h-60 max-h-60 min-w-40 mx-auto" src={`https://websapa.biz.id${penggerak.attributes?.foto_penggerak?.data[0]?.attributes?.url}`} alt={penggerak.attributes.nama_penggerak} />
+                                <div class="px-1 py-4">
+                                    <div class="font-bold text-xl mb-2">{penggerak.attributes.nama_penggerak}</div>
+                                    <p class="text-gray-700 text-base">
+                                        {penggerak.attributes.deskripsi_penggerak}
+                                    </p>
                                 </div>
-                            )
-                        })}
+                            </div>
+                        )
+                        )}
                     </div>
                 </div>
             </div>

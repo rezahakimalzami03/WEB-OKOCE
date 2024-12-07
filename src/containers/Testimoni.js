@@ -138,7 +138,7 @@ const Testimoni = () => {
                     alt="Testimonial"
                   />
                   <div>
-                    <p className="font-semibold text-gray-800">Reza Hakim</p>
+                    <p className="font-semibold text-gray-800">Agung Anggara</p>
                     <p className="text-xs text-gray-600">
                       Mahasiswa MSIB Batch 6
                     </p>
