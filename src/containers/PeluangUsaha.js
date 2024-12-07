@@ -6,9 +6,15 @@ import FloatingMenu from "../components/FloatingMenu";
 const cardClasses = 'bg-white p-4 rounded-lg shadow-md flex items-start cursor-pointer';
 
 const JobCard = ({ logo, title, location, job_system, category, onClick }) => {
+    const logoUrl = logo ? `http://localhost:1337${logo}` : '/fallback-logo.jpg'; // Tambahkan domain API dan fallback
     return (
         <div className={cardClasses} onClick={onClick}>
-            <img src={logo} alt="Company Logo" className="w-20 max-h-20  mr-4 object-cover rounded-full" />
+            <img
+                src={logoUrl}
+                alt="Company Logo"
+                className="w-20 max-h-20 mr-4 object-cover rounded-full"
+                onError={(e) => { e.target.src = '/fallback-logo.jpg'; }} // Fallback jika gambar gagal dimuat
+            />
             <div>
                 <h3 className="text-lg font-semibold">{title}</h3>
                 <p className="text-zinc-800">{location}</p>
@@ -34,7 +40,7 @@ const JobList = ({ onJobClick }) => {
 
     const fetchDataPeluangUsaha = async () => {
         try {
-            const response = await fetch('https://cms-okoce-a155c649b6e6.herokuapp.com/api/peluang-usahas?populate=*');
+            const response = await fetch('http://localhost:1337/api/peluang-usahas?populate=*');
             if (!response.ok) {
                 throw new Error('Gagal mengambil data peluang usaha');
             }
@@ -81,7 +87,7 @@ const PeluangUsaha = () => {
 
     const fetchJobDetails = async (id) => {
         try {
-            const response = await fetch(`https://cms-okoce-a155c649b6e6.herokuapp.com/api/peluang-usahas/${id}?populate=*`);
+            const response = await fetch(`http://localhost:1337/api/peluang-usahas/${id}?populate=*`);
             if (!response.ok) {
                 throw new Error('Gagal mengambil detail peluang usaha');
             }
@@ -101,7 +107,7 @@ const PeluangUsaha = () => {
         <>
             <section class="mt-[4em] bg-center bg-no-repeat" style={{ backgroundImage: `url(${Header})`, width: `100%`, height: `100%`, backgroundSize: `cover` }}>
                 <div class="px-4 mx-auto max-w-screen-xl text-center py-24 lg:py-56">
-                    <h1 class="mb-4 text-4xl font-extrabold tracking-tight leading-none text-white md:text-5xl lg:text-6xl">Yuk, Mulai Gabung dan Dapatkan Hasil Tambahan dengan daftar </h1>
+                    <h1 class="mb-4 text-4xl font-extrabold tracking-tight leading-none text-white md:text-5xl lg:text-6xl">Mulai bisnismu dan raih peluang sukses dengan dukungan penuh dari kami! </h1>
                     <p class="mb-8 text-lg font-normal text-gray-300 lg:text-xl sm:px-16 lg:px-48">Fondasi kami, idemu, bersama-sama kita maju dan berkembang untuk menciptakan masa depan bersama. </p>
                 </div>
             </section>
@@ -115,7 +121,11 @@ const PeluangUsaha = () => {
                     {jobDetails ? (
                         <div className="w-full h-full text-zinc-400">
                             <div className="mobile:ml-0 mobile:px-4 lg:mt-10 lg:ml-2 lg:pr-16 lg:pl-14">
-                                <img src={jobDetails.attributes?.foto_usaha?.data?.[0]?.attributes?.url} alt="" className="w-full object-cover rounded-full mobile:h-56 mobile:mt-8 lg:h-96"></img>
+                                <img src={jobDetails.attributes?.foto_usaha?.data?.[0]?.attributes?.url ? `http://localhost:1337${jobDetails?.attributes?.foto_usaha?.data?.[0]?.attributes?.url}` : '/fallback-image.jpg'}
+                                    alt={jobDetails.attributes.judul_usaha || 'Peluang Usaha'}
+                                    className="w-full object-cover rounded-full mobile:h-56 mobile:mt-8 lg:h-96"
+                                    onError={(e) => { e.target.src = '/fallback-image.jpg'; }} // Fallback jika error
+                                />
                                 <h3 className="text-3xl mt-16 ml-1 font-bold text-center text-black mb-4">{jobDetails.attributes.judul_usaha}</h3>
                                 <p className="text-lg mt-3 ml-1 font-normal text-black">Perkumpulan Gerakan OK OCE</p>
                                 <p className="text-lg ml-1 font-normal text-black">{jobDetails.attributes.lokasi_usaha}</p>

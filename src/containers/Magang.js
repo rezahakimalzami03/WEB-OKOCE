@@ -29,7 +29,7 @@ const JobList = ({ onJobClick }) => {
 
     const fetchDataMagang = async () => {
         try {
-            const response = await fetch('https://cms-okoce-a155c649b6e6.herokuapp.com/api/magangs?populate=*');
+            const response = await fetch('https://cms-okoce-6629e06db84b.herokuapp.com/api/magangs?populate=*');
             if (!response.ok) {
                 throw new Error('Gagal mengambil data magang');
             }
@@ -76,7 +76,7 @@ const Magang = () => {
 
     const fetchJobDetails = async (id) => {
         try {
-            const response = await fetch(`https://cms-okoce-a155c649b6e6.herokuapp.com/api/magangs/${id}?populate=*`);
+            const response = await fetch(`https://cms-okoce-6629e06db84b.herokuapp.com/api/magangs/${id}?populate=*`);
             if (!response.ok) {
                 throw new Error('Gagal mengambil detail magang');
             }
@@ -96,7 +96,7 @@ const Magang = () => {
         <>
             <section className="mt-[4em] bg-center bg-no-repeat" style={{ backgroundImage: `url(${Header})`, width: `100%`, height: `100%`, backgroundSize: `cover` }}>
                 <div className="px-4 mx-auto max-w-screen-xl text-center py-24 lg:py-56">
-                    <h1 className="mb-4 text-4xl font-extrabold tracking-tight leading-none text-white md:text-5xl lg:text-6xl">Yuk, Mulai Gabung dan Dapatkan Hasil Tambahan dengan daftar</h1>
+                    <h1 className="mb-4 text-4xl font-extrabold tracking-tight leading-none text-white md:text-5xl lg:text-6xl">Dapatkan Pengalaman Berhargamu dan Temukan Potensimu Bersama Program Magang OK OCE Indonesia!</h1>
                     <p className="mb-8 text-lg font-normal text-gray-300 lg:text-xl sm:px-16 lg:px-48">Fondasi kami, idemu, bersama-sama kita maju dan berkembang untuk menciptakan masa depan bersama.</p>
                 </div>
             </section>

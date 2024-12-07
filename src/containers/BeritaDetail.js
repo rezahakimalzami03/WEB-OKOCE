@@ -14,7 +14,7 @@ const BeritaDetail = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch(`https://cms-okoce-a155c649b6e6.herokuapp.com/api/beritas/${id}?populate=*`);
+                const response = await fetch(`https://cms-okoce-6629e06db84b.herokuapp.com/api/beritas/${id}?populate=*`);
                 if (!response.ok) {
                     throw new Error('Gagal mengambil data berita');
                 }
@@ -59,11 +59,16 @@ const BeritaDetail = () => {
                                         <img src={iconAuth} alt=""></img>
                                     </div>
                                     <div className="ml-2">
-                                        <h3>{newsData.attributes.author_berita}</h3>
+                                        <h3 className="text-black">{newsData.attributes.autor_berita}</h3>
                                     </div>
                                 </div>
                             </div>
-                            <img className="mt-10 object-cover w-full h-full" src={newsData.attributes?.foto_berita?.data?.attributes?.url} alt="" />
+                            <img className="mt-10 object-cover w-full h-full" src={
+                                newsData.attributes?.foto_berita?.data?.length > 0
+                                    ? `https://websapa.biz.id${newsData.attributes?.foto_berita?.data[0]?.attributes?.url}`
+                                    : "https://via.placeholder.com/150" // Placeholder image
+                            }
+                                alt={newsData.attributes?.judul_berita || "Gambar Berita"} />
                             <div className="w-full mt-14 mx-auto border-blue-400">
                                 <p className="text-lg text-black text-justify pb-4">{newsData.attributes?.deskripsi_berita}
                                 </p>

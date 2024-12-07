@@ -27,7 +27,6 @@ const Footer = () => {
                     <div class="mt-4 text-lg font-normal ">
                         <p>Jl. Tebet Barat Dalam VII No.3, RT.9/RW.6, Tebet Barat, Tebet, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12810</p>
                     </div>
-
                     <div class="m-12 flex justify-center space-x-2">
                         <a
                             href="https://www.facebook.com/profile.php?id=100064564037361"
@@ -78,6 +77,5 @@ const Footer = () => {
         </>
     );
 };
-
 
 export default Footer;

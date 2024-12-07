@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
 import { useState, useEffect } from "react";
 import Header from "../asset/img/Merch.png";
 import FloatingMenu from "../components/FloatingMenu";
@@ -9,24 +8,30 @@ const Merchandise = () => {
 
     const fetchData = async () => {
         try {
-            const response = await fetch('https://cms-okoce-a155c649b6e6.herokuapp.com/api/merchandises?populate=*&_sort=id:ASC&_cacheBuster=');
+            const response = await fetch(
+                `https://cms-okoce-6629e06db84b.herokuapp.com/api/merchandises?populate=*&_sort=id:ASC&_cacheBuster=${Date.now()}`
+            );
             if (!response.ok) {
                 throw new Error('Gagal mengambil data merchandise');
             }
             const data = await response.json();
             const merch = data.data;
-            merch.sort((a, b) => a.id - b.id);
+            console.log('Data Fetch:', merch); // Debugging log
+
             const merchandiseData = merch.map(item => {
-                const images = item.attributes.foto_merchandise?.data?.map(image => image.attributes.url) || [];
+                const images = item.attributes.foto_merchandise?.data?.map(
+                    image => `https://websapa.biz.id${image.attributes.url}`
+                ) || [];
                 return {
                     id: item.id,
-                    images: images,
+                    images,
                     judul: item.attributes.judul_merchandise,
                     harga: item.attributes.harga_merchandise,
                     stok: item.attributes.stock_merchandise,
                     deskripsi: item.attributes.deskripsi_merchandise,
                 };
             });
+
             setDatas(merchandiseData);
             setCurrentImageIndexes(new Array(merchandiseData.length).fill(0)); // Initialize image indexes
         } catch (error) {
@@ -66,22 +71,26 @@ const Merchandise = () => {
                         datas.map((item, currentItemIndex) => (
                             <div key={item.id} className="mb-16 rounded-xl flex mobile:flex-col mobile:bg-gray-200 mobile:p-4 lg:flex-row lg:bg-gray-200">
                                 <div className="mx-auto mobile:p-0 mobile:mb-6 mobile:w-full lg:py-8 lg:w-[20rem]">
-                                    <div className="relative rounded-lg overflow-hidden shadow-lg" data-carousel="static">
-                                        <div className="relative h-78" data-carousel-inner>
-                                            {item.images.map((imageUrl, index) => (
-                                                <div
-                                                    key={index}
-                                                    className={`duration-700 ease-in-out ${index === currentImageIndexes[currentItemIndex] ? 'block' : 'hidden'}`}
-                                                    data-carousel-item
-                                                >
-                                                    <img src={imageUrl} className="object-cover w-full h-full" alt={item.judul} />
-                                                </div>
-                                            ))}
+                                    <div className="relative rounded-lg overflow-hidden shadow-lg">
+                                        <div className="relative h-78">
+                                            {item.images.length > 0 ? (
+                                                <img
+                                                    src={item.images[currentImageIndexes[currentItemIndex]]}
+                                                    alt={item.judul}
+                                                    className="object-cover w-full h-full"
+                                                    onError={(e) => { e.target.src = '/fallback-image.jpg'; }} // Fallback jika gambar gagal dimuat
+                                                />
+                                            ) : (
+                                                <img
+                                                    src="/fallback-image.jpg"
+                                                    alt="Gambar tidak tersedia"
+                                                    className="object-cover w-full h-full"
+                                                />
+                                            )}
                                         </div>
                                         <button
                                             type="button"
                                             className="flex absolute top-1/2 left-3 z-40 items-center justify-center w-10 h-10 bg-gray-200/50 rounded-full hover:bg-gray-300 focus:outline-none transition"
-                                            data-carousel-prev
                                             onClick={() => goToPrevImage(currentItemIndex)}
                                         >
                                             <svg
@@ -97,7 +106,6 @@ const Merchandise = () => {
                                         <button
                                             type="button"
                                             className="flex absolute top-1/2 right-3 z-40 items-center justify-center w-10 h-10 bg-gray-200/50 rounded-full hover:bg-gray-300 focus:outline-none transition"
-                                            data-carousel-next
                                             onClick={() => goToNextImage(currentItemIndex)}
                                         >
                                             <svg
@@ -148,7 +156,7 @@ const Merchandise = () => {
                     )}
                 </div>
             </div>
-            <FloatingMenu />{" "}
+            <FloatingMenu />
         </>
     );
 };

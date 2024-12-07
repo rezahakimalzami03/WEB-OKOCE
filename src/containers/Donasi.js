@@ -12,7 +12,7 @@ const Donasi = () => {
     const fetchData = async () => {
         try {
             const response = await fetch(
-                "https://cms-okoce-a155c649b6e6.herokuapp.com/api/donasis?populate=*"
+                "https://cms-okoce-6629e06db84b.herokuapp.com/api/donasis?populate=*"
             );
             if (!response.ok) {
                 throw new Error("Gagal mengambil data donasi");
@@ -23,7 +23,7 @@ const Donasi = () => {
             setData(donasiData);
         } catch (error) {
             console.error("Error fetching donasi:", error);
-            // Jika terjadi kesalahan, pastikan untuk mengatur employees menjadi array kosong
+            // Jika terjadi kesalahan, pastikan untuk mengatur data donasi menjadi array kosong
             setData([]);
         }
     };
@@ -41,13 +41,18 @@ const Donasi = () => {
                         Scan QRIS melalui Aplikasi Payment dan Mobile Banking Melalui :
                     </p>
                     <div className="flex flex-col px-5">
-                        {datas.map((data, index) =>
+                        {datas.map((data, index) => (
                             <div key={index} className="mt-36 w-full max-md:mt-10 max-md:max-w-full" >
                                 <div className="flex gap-5 max-md:flex-col max-md:gap-0">
                                     <div className="flex flex-col w-[36%] max-md:ml-0 max-md:w-full">
                                         <img
                                             loading="lazy"
-                                            srcSet={data.attributes?.foto_donasi?.data?.attributes?.url}
+                                            src={
+                                                data.attributes?.foto_donasi?.data?.length > 0
+                                                    ? `https://websapa.biz.id${data.attributes?.foto_donasi?.data[0]?.attributes?.url}`
+                                                    : "https://via.placeholder.com/150" // Placeholder image
+                                            }
+                                            alt={data.attributes?.judul_berita || "Gambar Berita"}
                                             className="grow w-full shadow-sm aspect-[0.68] max-md:max-w-full"
                                         />
                                     </div>
@@ -63,6 +68,7 @@ const Donasi = () => {
                                     </div>
                                 </div>
                             </div>
+                        )
                         )}
                     </div>
                 </div>

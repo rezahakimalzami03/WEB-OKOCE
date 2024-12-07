@@ -33,7 +33,7 @@ const JobList = ({ onJobClick }) => {
 
     const fetchDataPeluangUsaha = async () => {
         try {
-            const response = await fetch('https://cms-okoce-a155c649b6e6.herokuapp.com/api/peluang-kerjas?populate=*');
+            const response = await fetch('http://localhost:1337/api/peluang-kerjas?populate=*');
             if (!response.ok) {
                 throw new Error('Gagal mengambil data peluang kerja');
             }
@@ -54,7 +54,7 @@ const JobList = ({ onJobClick }) => {
                 <div className="mt-0" key={data.id}>
                     <div className="space-y-4 mt-5">
                         <JobCard
-                            logo={data.attributes?.foto_kerja?.data?.attributes?.url}
+                            logo={data?.attributes?.foto_kerja?.data?.[0]?.attributes?.url ? `http://localhost:1337${data?.attributes?.foto_kerja?.data?.[0]?.attributes?.url}` : '/fallback-image.jpg'}
                             title={data.attributes?.judul_kerja}
                             location={data.attributes?.lokasi_kerja}
                             job_system={data.attributes?.sistem_kerja}
@@ -80,7 +80,7 @@ const PeluangKerja = () => {
 
     const fetchJobDetails = async (id) => {
         try {
-            const response = await fetch(`https://cms-okoce-a155c649b6e6.herokuapp.com/api/peluang-kerjas/${id}?populate=*`);
+            const response = await fetch(`http://localhost:1337/api/peluang-kerjas/${id}?populate=*`);
             if (!response.ok) {
                 throw new Error('Gagal mengambil detail peluang kerja');
             }
@@ -99,7 +99,7 @@ const PeluangKerja = () => {
         <>
             <section class="mt-[4em] bg-center bg-no-repeat" style={{ backgroundImage: `url(${Header})`, width: `100%`, height: `100%`, backgroundSize: `cover` }}>
                 <div class="px-4 mx-auto max-w-screen-xl text-center py-24 lg:py-56">
-                    <h1 class="mb-4 text-4xl font-extrabold tracking-tight leading-none text-white md:text-5xl lg:text-6xl">Yuk, Mulai Gabung dan Dapatkan Hasil Tambahan dengan daftar</h1>
+                    <h1 class="mb-4 text-4xl font-extrabold tracking-tight leading-none text-white md:text-5xl lg:text-6xl">Gabung dengan OK OCE Indonesia dan wujudkan karier impianmu bersama komunitas yang mendukung!</h1>
                     <p class="mb-8 text-lg font-normal text-gray-300 lg:text-xl sm:px-16 lg:px-48">Fondasi kami, idemu, bersama-sama kita maju dan berkembang untuk menciptakan masa depan bersama yang lebih cerah.</p>
                 </div>
             </section>
@@ -113,7 +113,7 @@ const PeluangKerja = () => {
                     {jobDetails ? (
                         <div className="w-full h-full text-zinc-400">
                             <div className="mobile:ml-0 mobile:px-4 lg:mt-10 lg:ml-2 lg:pr-16 lg:pl-14">
-                                <img src={jobDetails.attributes?.foto_kerja?.data?.attributes?.url} alt="" className="w-full object-cover rounded-full mobile:h-56 mobile:mt-8 lg:h-96"></img>
+                                <img src={jobDetails?.attributes?.foto_kerja?.data?.[0]?.attributes?.url ? `http://localhost:1337${jobDetails?.attributes?.foto_kerja?.data?.[0]?.attributes?.url}` : '/fallback-image.jpg'} className="w-full object-cover rounded-full mobile:h-56 mobile:mt-8 lg:h-96"></img>
                                 <h3 className="text-3xl mt-16 ml-1 font-bold text-center text-black mb-4">{jobDetails.attributes.judul_kerja}</h3>
                                 <p className="text-lg mt-3 ml-1 font-normal text-black">Perkumpulan Gerakan OK OCE</p>
                                 <p className="text-lg ml-1 font-normal text-black">{jobDetails.attributes.lokasi_kerja}</p>

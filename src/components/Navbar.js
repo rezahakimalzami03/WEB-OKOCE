@@ -446,7 +446,7 @@ function Navbar() {
               <a href="https://ecsys.okoce.net/register" className="w-7/12 mx-auto">
                 <button
                   type="button"
-                  class="w-full text-white bg-red-600 mr-6 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                  class="w-full text-white bg-red-600 mr-6 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:hover:bg-red-700 dark:focus:ring-blue-800">
                   Daftar
                 </button>
               </a>
@@ -779,7 +779,7 @@ function Navbar() {
                 Masuk
               </a>
               <a
-                class="text-white bg-blue-700 mr-6 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-base px-4 py-2 text-center bg-red-600 hover:bg-blue-700 dark:focus:ring-blue-800"
+                class="text-white bg-blue-700 mr-6 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-base px-4 py-2 text-center bg-red-600 hover:bg-red-700 dark:focus:ring-blue-800"
                 href="https://ecsys.okoce.net/register">
                 Daftar
               </a>

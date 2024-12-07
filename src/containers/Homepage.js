@@ -81,7 +81,7 @@ const Homepage = () => {
     const fetchDataNews = async () => {
         try {
             const response = await fetch(
-                "https://cms-okoce-a155c649b6e6.herokuapp.com/api/beritas?populate=*"
+                "https://cms-okoce-6629e06db84b.herokuapp.com/api/beritas?populate=*"
             );
             if (!response.ok) {
                 throw new Error("Gagal mengambil data berita");
@@ -103,7 +103,7 @@ const Homepage = () => {
     const fetchDataEvents = async () => {
         try {
             const response = await fetch(
-                "https://cms-okoce-a155c649b6e6.herokuapp.com/api/events?populate=*"
+                "https://cms-okoce-6629e06db84b.herokuapp.com/api/events?populate=*"
             );
             if (!response.ok) {
                 throw new Error("Gagal mengambil data event");
@@ -142,7 +142,6 @@ const Homepage = () => {
                 <div className="relative w-full mt-0 mobile:h-full lg:h-screen">
                     <HomepageCarousel images={images} interval={4000} className="object-cover w-full h-auto mobile:w-[200%]" />
                 </div>
-
                 <div
                     id="about"
                     className="mb-20 flex items-center bg-white mx-auto mobile:justify-start mobile:w-80 mobile:mt-14 sm:w-96 lg:justify-center lg:w-3/4 lg:mt-28">
@@ -280,7 +279,6 @@ const Homepage = () => {
                         </div>
                     </div>
                 </div>
-
                 <div class="grid grid-grid-flow-row justify-items-center items-center mobile:w-80 mobile:mx-auto sm:w-96 lg:w-full">
                     <div class="md:pt-16 pb-8">
                         <h2 class="text-sky-700 text-center font-poppins font-bold-700 mobile:text-xl mobile:font-bold lg:text-4xl ">
@@ -318,7 +316,6 @@ const Homepage = () => {
                         </div>
                     </div>
                 </div>
-
                 <div class="grid gap-4 sm:grid-cols-1 md:grid-cols-2 lg:w-10/12 lg:mx-auto lg:grid-cols-3 p-4">
                     <div class="bg-yellow-100 rounded-lg p-4 flex items-center">
                         <img src={Profile1} alt="User Icon" class="mr-4" />
@@ -357,7 +354,6 @@ const Homepage = () => {
                         </div>
                     </div>
                 </div>
-
                 <div class="bg-white mt-12 lg:pb-20 mobile:pb-5 grid justify-items-center mobile:w-80 mobile:mx-auto sm:w-96 lg:w-full">
                     <div class="md:pt-8 mb-4">
                         <h3 class="text-sky-700 text-center font-poppins mobile:text-2xl font-bold-700 mobile:text-xl mobile:font-bold lg:text-4xl">
@@ -416,7 +412,6 @@ const Homepage = () => {
                         </a>
                     </div>
                 </div>
-
                 <div class="bg-white mobile:w-80 mobile:mb-0 mobile:mx-auto sm:w-96 lg:w-full">
                     <div class="mt-20 mobile:mb-6 lg:mb-12">
                         <h3 class="text-sky-700 text-center font-poppins mobile:text-2xl font-bold-700 mobile:text-xl mobile:font-bold lg:text-4xl">
@@ -442,7 +437,12 @@ const Homepage = () => {
                                     <div className="border-2 border-black p-2">
                                         <img
                                             class="max-h-[10rem] min-w-42"
-                                            src={event.attributes.foto_event.data.attributes.url}
+                                            src={
+                                                event.attributes?.foto_event?.data?.length > 0
+                                                    ? `https://websapa.biz.id${event.attributes?.foto_event?.data[0]?.attributes?.url}`
+                                                    : "https://via.placeholder.com/150" // Placeholder image
+                                            }
+                                            alt={event.attributes?.judul_event || "Gambar Berita"}
                                         />
                                     </div>
                                 ))}
@@ -455,7 +455,12 @@ const Homepage = () => {
                                     <div className="border-2 border-black p-2">
                                         <img
                                             class="object-cover mobile:max-w-40 mobile:h-auto lg:h-full lg:w-40"
-                                            src={data.attributes.foto_berita.data.attributes.url}
+                                            src={
+                                                data.attributes?.foto_berita?.data?.length > 0
+                                                    ? `https://websapa.biz.id${data.attributes?.foto_berita?.data[0]?.attributes?.url}`
+                                                    : "https://via.placeholder.com/150" // Placeholder image
+                                            }
+                                            alt={data.attributes?.judul_berita || "Gambar Berita"}
                                         />
                                     </div>
                                 ))}
@@ -473,32 +478,36 @@ const Homepage = () => {
                     <div className="grid mobile:grid-cols-1 mobile:mt-10 lg:w-11/12 lg:mx-auto lg:grid-cols-3 lg:gap-y-8 lg:gap-x-4 lg:mt-0">
                         {datas.map((data, index) => (
                             <div key={index} className="w-full mx-auto p-4">
-                                <div className="bg-blue-400 shadow-md rounded-lg lg:mr-1">
+                                <div className="bg-white shadow-md rounded-lg lg:mr-1">
                                     <div className="p-5">
                                         <img
                                             className="object-cover w-full mobile:h-36 lg:h-72"
-                                            src={data.attributes?.foto_berita?.data?.attributes?.url}
-                                            alt=""
+                                            src={
+                                                data.attributes?.foto_berita?.data?.length > 0
+                                                    ? `https://websapa.biz.id${data.attributes?.foto_berita?.data[0]?.attributes?.url}`
+                                                    : "https://via.placeholder.com/150" // Placeholder image
+                                            }
+                                            alt={data.attributes?.judul_berita || "Gambar Berita"}
                                         />
                                         <div className="relative group mb-2 mt-6 h-20">
-                                            <div className="text-base leading-7 text-white font-bold text-xl overflow-hidden line-clamp-2">
+                                            <div className="text-base leading-7 text-black font-bold text-xl overflow-hidden line-clamp-2">
                                                 {data.attributes?.judul_berita}
                                             </div>
                                             <div className="absolute left-0 bottom-full mb-2 hidden w-full text-xs text-white bg-black p-2 rounded group-hover:block">
                                                 {data.attributes?.judul_berita}
                                             </div>
                                         </div>
-                                        <p className="text-white">
-                                            Author: {data.attributes?.author_berita}
+                                        <p className="text-black">
+                                            Author: {data.attributes?.autor_berita}
                                         </p>
                                         <div className="flex space-x-4 my-4">
-                                            <span className="bg-white text-blue-800 text-sm font-semibold mr-2 px-2.5 py-0.5 rounded">
+                                            <span className="bg-black text-white text-sm font-semibold mr-2 px-2.5 py-0.5 rounded">
                                                 Tanggal Publish: {data.attributes?.tanggal_berita}
                                             </span>
                                         </div>
                                         <Link to={`/daftarberita/${data.id}`}>
                                             <div className="mt-8 flex justify-start">
-                                                <button className="bg-white w-full text-black font-bold p-2 rounded-lg hover:bg-red-600 hover:text-white">
+                                                <button className="bg-red-600 w-full text-white font-bold p-2 rounded-lg hover:bg-red-700 hover:text-white">
                                                     Read more
                                                 </button>
                                             </div>
