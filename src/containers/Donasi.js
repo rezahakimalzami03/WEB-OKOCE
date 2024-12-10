@@ -49,7 +49,7 @@ const Donasi = () => {
                                             loading="lazy"
                                             src={
                                                 data.attributes?.foto_donasi?.data?.length > 0
-                                                    ? `https://websapa.biz.id${data.attributes?.foto_donasi?.data[0]?.attributes?.url}`
+                                                    ? `https://cms-okoce-6629e06db84b.herokuapp.com${data.attributes?.foto_donasi?.data[0]?.attributes?.url}`
                                                     : "https://via.placeholder.com/150" // Placeholder image
                                             }
                                             alt={data.attributes?.judul_berita || "Gambar Berita"}
