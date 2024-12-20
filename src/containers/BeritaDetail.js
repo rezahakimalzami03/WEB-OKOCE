@@ -65,7 +65,7 @@ const BeritaDetail = () => {
                             </div>
                             <img className="mt-10 object-cover w-full h-full" src={
                                 newsData.attributes?.foto_berita?.data?.length > 0
-                                    ? `https://websapa.biz.id${newsData.attributes?.foto_berita?.data[0]?.attributes?.url}`
+                                    ? `https://cms-okoce-6629e06db84b.herokuapp.com${newsData.attributes?.foto_content?.data[0]?.attributes?.url}`
                                     : "https://via.placeholder.com/150" // Placeholder image
                             }
                                 alt={newsData.attributes?.judul_berita || "Gambar Berita"} />

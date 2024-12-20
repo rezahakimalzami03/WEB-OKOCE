@@ -457,7 +457,7 @@ const Homepage = () => {
                                             class="object-cover mobile:max-w-40 mobile:h-auto lg:h-full lg:w-40"
                                             src={
                                                 data.attributes?.foto_berita?.data?.length > 0
-                                                    ? `https://websapa.biz.id${data.attributes?.foto_berita?.data[0]?.attributes?.url}`
+                                                    ? `https://cms-okoce-6629e06db84b.herokuapp.com${data.attributes?.foto_berita?.data[0]?.attributes?.url}`
                                                     : "https://via.placeholder.com/150" // Placeholder image
                                             }
                                             alt={data.attributes?.judul_berita || "Gambar Berita"}
@@ -484,7 +484,7 @@ const Homepage = () => {
                                             className="object-cover w-full mobile:h-36 lg:h-72"
                                             src={
                                                 data.attributes?.foto_berita?.data?.length > 0
-                                                    ? `https://websapa.biz.id${data.attributes?.foto_berita?.data[0]?.attributes?.url}`
+                                                    ? `https://cms-okoce-6629e06db84b.herokuapp.com${data.attributes?.foto_berita?.data[0]?.attributes?.url}`
                                                     : "https://via.placeholder.com/150" // Placeholder image
                                             }
                                             alt={data.attributes?.judul_berita || "Gambar Berita"}

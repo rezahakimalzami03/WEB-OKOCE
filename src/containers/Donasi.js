@@ -43,8 +43,8 @@ const Donasi = () => {
                     <div className="flex flex-col px-5">
                         {datas.map((data, index) => (
                             <div key={index} className="mt-36 w-full max-md:mt-10 max-md:max-w-full" >
-                                <div className="flex gap-5 max-md:flex-col max-md:gap-0">
-                                    <div className="flex flex-col w-[36%] max-md:ml-0 max-md:w-full">
+                                <div className="flex gap-b-5 max-md:flex-col max-md:gap-0">
+                                    <div className="flex flex-col w-[40%] max-md:ml-0 max-md:w-full">
                                         <img
                                             loading="lazy"
                                             src={
@@ -53,15 +53,15 @@ const Donasi = () => {
                                                     : "https://via.placeholder.com/150" // Placeholder image
                                             }
                                             alt={data.attributes?.judul_berita || "Gambar Berita"}
-                                            className="grow w-full shadow-sm aspect-[0.68] max-md:max-w-full"
+                                            className="grow w-full h-auto shadow-sm max-md:max-w-full"
                                         />
                                     </div>
-                                    <div className="flex flex-col ml-5 w-[64%] max-md:ml-0 max-md:w-full">
-                                        <div className="flex flex-col grow px-12 py-16 w-full text-black bg-gray-50 rounded-none shadow-sm max-md:px-5 max-md:max-w-full">
-                                            <div className="text-5xl font-semibold leading-[90px] max-md:max-w-full max-md:text-4xl">
+                                    <div className="flex flex-col ml-5 w-[60%] max-md:ml-0 max-md:w-full">
+                                        <div className="flex flex-col grow px-12 py-10 w-full text-black bg-gray-50 rounded-none shadow-sm max-md:px-5 max-md:max-w-full">
+                                            <div className="text-2xl text-center font-semibold leading-[50px] max-md:max-w-full max-md:text-4xl">
                                                 {data.attributes.judul_donasi}
                                             </div>
-                                            <div className="mt-9 text-2xl leading-10 text-justify max-md:max-w-full">
+                                            <div className="mt-2 text-82 leading-8 text-justify max-md:max-w-full">
                                                 {data.attributes.deskripsi_donasi}
                                             </div>
                                         </div>
