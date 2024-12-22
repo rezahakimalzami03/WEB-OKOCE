@@ -42,15 +42,12 @@ const EventDetail = () => {
                     {/* Gambar event */}
                     <img
                         className="object-cover w-full h-full"
-                        src={
-                            eventData.attributes?.foto_event?.data?.length > 0
-                                ? `https://websapa.biz.id${eventData.attributes?.foto_event?.data[0]?.attributes?.url}`
-                                : "https://via.placeholder.com/150" // Placeholder image
-                        }
-                        alt={eventData.attributes?.judul_event || "Gambar Berita"}
+                        src={`https://websapa.biz.id${eventData.attributes?.foto_event?.data[0]?.attributes?.url}`}
                         onError={(e) => {
-                            e.target.src = "/fallback-image.jpg"; // Fallback jika URL gambar gagal dimuat
+                            e.target.onerror = null; // Mencegah infinite loop
+                            e.target.src = `https://cms-okoce-6629e06db84b.herokuapp.com${eventData.attributes?.foto_event?.data[0]?.attributes?.url}`;
                         }}
+                        alt={eventData.attributes?.judul_event || "Gambar Berita"}
                     />
 
                     {/* Detail Event */}

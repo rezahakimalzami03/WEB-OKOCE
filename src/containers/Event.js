@@ -58,11 +58,11 @@ const Event = () => {
                     >
                         <div className="flex flex-col grow max-md:mt-10">
                             <img className="w-full shadow-sm aspect-square"
-                                src={
-                                    data.attributes?.foto_event?.data?.length > 0
-                                        ? `https://websapa.biz.id${data.attributes?.foto_event?.data[0]?.attributes?.url}`
-                                        : "https://via.placeholder.com/150" // Placeholder image
-                                }
+                                src={`https://websapa.biz.id${data.attributes?.foto_event?.data[0]?.attributes?.url}`}
+                                onError={(e) => {
+                                    e.target.onerror = null; // Mencegah infinite loop
+                                    e.target.src = `https://cms-okoce-6629e06db84b.herokuapp.com${data.attributes?.foto_event?.data[0]?.attributes?.url}`;
+                                }}
                                 alt={data.attributes?.judul_event || "Gambar Berita"}
                             />
                             <div className="flex flex-col px-4 py-5 w-full bg-white shadow-sm">

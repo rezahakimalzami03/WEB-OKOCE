@@ -47,11 +47,11 @@ const Donasi = () => {
                                     <div className="flex flex-col w-[40%] max-md:ml-0 max-md:w-full">
                                         <img
                                             loading="lazy"
-                                            src={
-                                                data.attributes?.foto_donasi?.data?.length > 0
-                                                    ? `https://cms-okoce-6629e06db84b.herokuapp.com${data.attributes?.foto_donasi?.data[0]?.attributes?.url}`
-                                                    : "https://via.placeholder.com/150" // Placeholder image
-                                            }
+                                            src={`https://websapa.biz.id${data.attributes?.foto_donasi?.data[0]?.attributes?.url}`}
+                                            onError={(e) => {
+                                                e.target.onerror = null; // Mencegah infinite loop
+                                                e.target.src = `https://cms-okoce-6629e06db84b.herokuapp.com${data.attributes?.foto_donasi?.data[0]?.attributes?.url}`;
+                                            }}
                                             alt={data.attributes?.judul_berita || "Gambar Berita"}
                                             className="grow w-full h-auto shadow-sm max-md:max-w-full"
                                         />

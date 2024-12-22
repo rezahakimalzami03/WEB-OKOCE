@@ -7,9 +7,13 @@ const cardClasses = 'bg-white p-4 rounded-lg shadow-md flex items-start cursor-p
 
 const JobCard = ({ logo, title, location, job_system, category, onClick }) => {
     const logoUrl = logo ? `https://websapa.biz.id${logo}` : '/fallback-logo.jpg';
+    const fallbackLogo = logo ? `https://cms-okoce-6629e06db84b.herokuapp.com${logo}` : '/fallback-logo.jpg';
     return (
         <div className={cardClasses} onClick={onClick}>
-            <img src={logoUrl} alt="Company Logo" className="w-20 max-h-20  mr-4 object-cover rounded-full" />
+            <img src={logoUrl} alt="Company Logo" className="w-20 max-h-20  mr-4 object-cover rounded-full" onError={(e) => {
+                e.target.onerror = null; // Mencegah infinite loop
+                e.target.src = fallbackLogo; // Fallback ke sumber kedua
+            }} />
             <div>
                 <h3 className="text-lg font-semibold">{title}</h3>
                 <p className="text-zinc-800">{location}</p>
@@ -30,17 +34,20 @@ const JobList = ({ onJobClick }) => {
     const [datas, setData] = useState([]);
 
     useEffect(() => {
-        fetchDataPeluangUsaha();
+        fetchDataPeluangKerja();
     }, []);
 
-    const fetchDataPeluangUsaha = async () => {
+    const fetchDataPeluangKerja = async () => {
         try {
             const response = await fetch('https://cms-okoce-6629e06db84b.herokuapp.com/api/peluang-kerjas?populate=*');
             if (!response.ok) {
                 throw new Error('Gagal mengambil data peluang kerja');
             }
             const data = await response.json();
-            const PelKerData = data.data;
+            const PelKerData = data.data.map((item) => ({
+                ...item,
+                logo: item.attributes?.foto_kerja?.data?.[0]?.attributes?.url || null,
+            }));
             PelKerData.sort((a, b) => b.id - a.id);
             console.log(PelKerData);
             setData(PelKerData);
@@ -56,7 +63,7 @@ const JobList = ({ onJobClick }) => {
                 <div className="mt-0" key={data.id}>
                     <div className="space-y-4 mt-5">
                         <JobCard
-                            logo={data?.attributes?.foto_kerja?.data?.[0]?.attributes?.url}
+                            logo={data.logo}
                             title={data.attributes?.judul_kerja}
                             location={data.attributes?.lokasi_kerja}
                             job_system={data.attributes?.sistem_kerja}
@@ -115,10 +122,20 @@ const PeluangKerja = () => {
                     {jobDetails ? (
                         <div className="w-full h-full text-zinc-400">
                             <div className="mobile:ml-0 mobile:px-4 lg:mt-10 lg:ml-2 lg:pr-16 lg:pl-14">
-                                <img src={jobDetails.attributes?.foto_kerja?.data?.length > 0
-                                    ? `https://websapa.biz.id${jobDetails.attributes?.foto_kerja?.data[0]?.attributes?.url}`
-                                    : "https://via.placeholder.com/150" // Placeholder image
-                                } className="w-full object-cover rounded-full mobile:h-56 mobile:mt-8 lg:h-96"></img>
+                                <img
+                                    src={
+                                        jobDetails.attributes?.foto_kerja?.data?.[0]?.attributes?.url
+                                            ? `https://websapa.biz.id${jobDetails.attributes.foto_kerja.data[0].attributes.url}`
+                                            : "https://via.placeholder.com/150"
+                                    }
+                                    alt={jobDetails.attributes.judul_kerja || 'Peluang Kerja'}
+                                    className="w-full object-cover rounded-full mobile:h-56 mobile:mt-8 lg:h-96"
+                                    onError={(e) => {
+                                        e.target.onerror = null; // Hindari infinite loop
+                                        e.target.src = `https://cms-okoce-6629e06db84b.herokuapp.com${jobDetails.attributes?.foto_kerja?.data?.[0]?.attributes?.url}`;
+                                    }}
+                                />
+
                                 <h3 className="text-3xl mt-16 ml-1 font-bold text-center text-black mb-4">{jobDetails.attributes.judul_kerja}</h3>
                                 <p className="text-lg mt-3 ml-1 font-normal text-black">Perkumpulan Gerakan OK OCE</p>
                                 <p className="text-lg ml-1 font-normal text-black">{jobDetails.attributes.lokasi_kerja}</p>

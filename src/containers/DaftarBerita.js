@@ -54,11 +54,11 @@ const DaftarBerita = () => {
                         <div key={index} className="w-full mx-auto p-4">
                             <div className="bg-white shadow-md rounded-lg lg:mr-1">
                                 <div className="p-5">
-                                    <img className="object-cover w-full mobile:h-36 lg:h-96" src={
-                                        data.attributes?.foto_berita?.data?.length > 0
-                                            ? `https://cms-okoce-6629e06db84b.herokuapp.com${data.attributes?.foto_berita?.data[0]?.attributes?.url}`
-                                            : "https://via.placeholder.com/150" // Placeholder image
-                                    }
+                                    <img className="object-cover w-full mobile:h-36 lg:h-96" src={`https://websapa.biz.id${data.attributes?.foto_berita?.data[0]?.attributes?.url}`}
+                                        onError={(e) => {
+                                            e.target.onerror = null; // Mencegah infinite loop
+                                            e.target.src = `https://cms-okoce-6629e06db84b.herokuapp.com${data.attributes?.foto_berita?.data[0]?.attributes?.url}`;
+                                        }}
                                         alt={data.attributes?.judul_berita || "Gambar Berita"} />
                                     <div className="relative group mt-6 h-20">
                                         <div className="text-base leading-7 text-black font-bold text-xl overflow-hidden line-clamp-2">

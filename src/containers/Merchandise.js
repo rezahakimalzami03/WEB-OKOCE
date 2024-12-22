@@ -1,12 +1,15 @@
 import { useState, useEffect } from "react";
 import Header from "../asset/img/Merch.png";
 import FloatingMenu from "../components/FloatingMenu";
+import ModalLoading from "../components/modalLoading";
 
 const Merchandise = () => {
     const [datas, setDatas] = useState([]);
     const [currentImageIndexes, setCurrentImageIndexes] = useState([]);
+    const [isLoading, setIsLoading] = useState(false); // State untuk modal loading
 
     const fetchData = async () => {
+        setIsLoading(true); // Set loading ke true sebelum fetch data
         try {
             const response = await fetch(
                 `https://cms-okoce-6629e06db84b.herokuapp.com/api/merchandises?populate=*&_sort=id:ASC&_cacheBuster=${Date.now()}`
@@ -16,12 +19,14 @@ const Merchandise = () => {
             }
             const data = await response.json();
             const merch = data.data;
-            console.log('Data Fetch:', merch); // Debugging log
 
             const merchandiseData = merch.map(item => {
-                const images = item.attributes.foto_merchandise?.data?.map(
-                    image => `https://websapa.biz.id${image.attributes.url}`
-                ) || [];
+                const images = item.attributes.foto_merchandise?.data?.map(image => {
+                    const primaryImage = `https://websapa.biz.id${image.attributes.url}`;
+                    const fallbackImage = `https://cms-okoce-6629e06db84b.herokuapp.com${image.attributes.url}`;
+                    return { primary: primaryImage, fallback: fallbackImage };
+                }) || [];
+
                 return {
                     id: item.id,
                     images,
@@ -37,6 +42,8 @@ const Merchandise = () => {
         } catch (error) {
             console.error('Error fetching data:', error);
             setDatas([]);
+        } finally {
+            setIsLoading(false); // Set loading ke false setelah fetch selesai
         }
     };
 
@@ -62,6 +69,7 @@ const Merchandise = () => {
 
     return (
         <>
+            <ModalLoading isOpen={isLoading} /> {/* Tampilkan modal saat loading */}
             <div className="mt-24">
                 <img className="w-full" src={Header} alt="Header" />
             </div>
@@ -75,10 +83,15 @@ const Merchandise = () => {
                                         <div className="relative h-78">
                                             {item.images.length > 0 ? (
                                                 <img
-                                                    src={item.images[currentImageIndexes[currentItemIndex]]}
+                                                    src={item.images[currentImageIndexes[currentItemIndex]]?.primary}
                                                     alt={item.judul}
                                                     className="object-cover w-full h-full"
-                                                    onError={(e) => { e.target.src = '/fallback-image.jpg'; }} // Fallback jika gambar gagal dimuat
+                                                    onError={(e) => {
+                                                        e.target.onerror = null; // Mencegah infinite loop
+                                                        e.target.src =
+                                                            item.images[currentImageIndexes[currentItemIndex]]?.fallback ||
+                                                            '/fallback-image.jpg'; // Fallback ke sumber kedua atau placeholder
+                                                    }}
                                                 />
                                             ) : (
                                                 <img
@@ -152,7 +165,7 @@ const Merchandise = () => {
                             </div>
                         ))
                     ) : (
-                        <p>Loading data...</p>
+                        <></>
                     )}
                 </div>
             </div>

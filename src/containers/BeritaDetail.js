@@ -63,11 +63,11 @@ const BeritaDetail = () => {
                                     </div>
                                 </div>
                             </div>
-                            <img className="mt-10 object-cover w-full h-full" src={
-                                newsData.attributes?.foto_berita?.data?.length > 0
-                                    ? `https://cms-okoce-6629e06db84b.herokuapp.com${newsData.attributes?.foto_content?.data[0]?.attributes?.url}`
-                                    : "https://via.placeholder.com/150" // Placeholder image
-                            }
+                            <img className="mt-10 object-cover w-full h-full" src={`https://websapa.biz.id${newsData.attributes?.foto_content?.data[0]?.attributes?.url}`}
+                                onError={(e) => {
+                                    e.target.onerror = null; // Mencegah infinite loop
+                                    e.target.src = `https://cms-okoce-6629e06db84b.herokuapp.com${newsData.attributes?.foto_content?.data[0]?.attributes?.url}`;
+                                }}
                                 alt={newsData.attributes?.judul_berita || "Gambar Berita"} />
                             <div className="w-full mt-14 mx-auto border-blue-400">
                                 <p className="text-lg text-black text-justify pb-4">{newsData.attributes?.deskripsi_berita}
@@ -76,7 +76,6 @@ const BeritaDetail = () => {
                                 </p>
                                 <p className="mt-2 text-lg text-black text-justify pb-4">{newsData.attributes?.deskripsi_berita_3}
                                 </p>
-                                <img className="mt-6 mb-10 object-cover w-full h-full" src={newsData.attributes?.foto_content?.data?.attributes?.url} alt="" />
                                 <p className="mt-2 text-lg text-black text-justify pb-4">{newsData.attributes?.deskripsi_berita_4}
                                 </p>
                                 <p className="mt-2 text-lg text-black text-justify pb-4">{newsData.attributes?.deskripsi_berita_5}

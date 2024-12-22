@@ -6,14 +6,18 @@ import FloatingMenu from "../components/FloatingMenu";
 const cardClasses = 'bg-white p-4 rounded-lg shadow-md flex items-start cursor-pointer';
 
 const JobCard = ({ logo, title, location, job_system, category, onClick }) => {
-    const logoUrl = logo ? `https://websapa.biz.id${logo}` : '/fallback-logo.jpg';
+    const primaryUrl = logo ? `https://websapa.biz.id${logo}` : '/fallback-logo.jpg';
+    const fallbackUrl = logo ? `https://cms-okoce-6629e06db84b.herokuapp.com${logo}` : '/fallback-logo.jpg';
     return (
         <div className={cardClasses} onClick={onClick}>
             <img
-                src={logoUrl}
+                src={primaryUrl}
                 alt="Company Logo"
                 className="w-20 max-h-20 mr-4 object-cover rounded-full"
-                onError={(e) => { e.target.src = '/fallback-logo.jpg'; }} // Gambar fallback
+                onError={(e) => {
+                    e.target.onerror = null; // Mencegah infinite loop
+                    e.target.src = fallbackUrl; // Fallback URL
+                }}
             />
             <div>
                 <h3 className="text-lg font-semibold">{title}</h3>
@@ -40,28 +44,32 @@ const JobList = ({ onJobClick }) => {
 
     const fetchDataPeluangUsaha = async () => {
         try {
-            const response = await fetch('https://cms-okoce-6629e06db84b.herokuapp.com/api/peluang-usahas?populate=*');
+            const response = await fetch(
+                'https://cms-okoce-6629e06db84b.herokuapp.com/api/peluang-usahas?populate=*'
+            );
             if (!response.ok) {
                 throw new Error('Gagal mengambil data peluang usaha');
             }
             const data = await response.json();
-            const PelUsData = data.data;
+            const PelUsData = data.data.map((item) => ({
+                ...item,
+                logo: item.attributes?.foto_usaha?.data?.[0]?.attributes?.url || null,
+            }));
             PelUsData.sort((a, b) => a.id - b.id);
-            console.log(PelUsData);
             setData(PelUsData);
         } catch (error) {
-            console.error('Error fetching peluang usaha :', error);
+            console.error('Error fetching peluang usaha:', error);
             setData([]);
         }
     };
 
     return (
         <div>
-            {datas.map((data) =>
+            {datas.map((data) => (
                 <div className="mt-0" key={data.id}>
                     <div className="space-y-4 mt-5">
                         <JobCard
-                            logo={data.attributes?.foto_usaha?.data?.[0]?.attributes?.url || null}
+                            logo={data.logo}
                             title={data.attributes?.judul_usaha}
                             location={data.attributes?.lokasi_usaha}
                             job_system={data.attributes?.sistem_kerja}
@@ -70,7 +78,7 @@ const JobList = ({ onJobClick }) => {
                         />
                     </div>
                 </div>
-            )}
+            ))}
         </div>
     );
 };
@@ -121,15 +129,20 @@ const PeluangUsaha = () => {
                     {jobDetails ? (
                         <div className="w-full h-full text-zinc-400">
                             <div className="mobile:ml-0 mobile:px-4 lg:mt-10 lg:ml-2 lg:pr-16 lg:pl-14">
-                                <img src={
-                                    jobDetails.attributes?.foto_usaha?.data?.length > 0
-                                        ? `https://websapa.biz.id${jobDetails.attributes?.foto_usaha?.data[0]?.attributes?.url}`
-                                        : "https://via.placeholder.com/150" // Placeholder image
-                                }
+                                <img
+                                    src={
+                                        jobDetails.attributes?.foto_usaha?.data?.[0]?.attributes?.url
+                                            ? `https://websapa.biz.id${jobDetails.attributes.foto_usaha.data[0].attributes.url}`
+                                            : "https://via.placeholder.com/150"
+                                    }
                                     alt={jobDetails.attributes.judul_usaha || 'Peluang Usaha'}
                                     className="w-full object-cover rounded-full mobile:h-56 mobile:mt-8 lg:h-96"
-                                    onError={(e) => { e.target.src = '/fallback-image.jpg'; }} // Fallback jika error
+                                    onError={(e) => {
+                                        e.target.onerror = null; // Mencegah infinite loop
+                                        e.target.src = `https://cms-okoce-6629e06db84b.herokuapp.com${jobDetails.attributes?.foto_usaha?.data?.[0]?.attributes?.url}`;
+                                    }}
                                 />
+
                                 <h3 className="text-3xl mt-16 ml-1 font-bold text-center text-black mb-4">{jobDetails.attributes.judul_usaha}</h3>
                                 <p className="text-lg mt-3 ml-1 font-normal text-black">Perkumpulan Gerakan OK OCE</p>
                                 <p className="text-lg ml-1 font-normal text-black">{jobDetails.attributes.lokasi_usaha}</p>

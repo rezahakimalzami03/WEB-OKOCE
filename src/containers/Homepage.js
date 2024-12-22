@@ -89,7 +89,7 @@ const Homepage = () => {
             const data = await response.json();
             // Extract the data array from the response
             const newsData = data.data;
-            newsData.sort((a, b) => a.id - b.id);
+            newsData.sort((a, b) => b.id - a.id);
             const lastThreeData = newsData.slice(0, 3); // Mengambil 3 data terakhir
             console.log(lastThreeData);
             setData(lastThreeData);
@@ -111,7 +111,7 @@ const Homepage = () => {
             const data = await response.json();
             // Extract the data array from the response
             const eventData = data.data;
-            eventData.sort((a, b) => a.id - b.id);
+            eventData.sort((a, b) => b.id - a.id);
             const lastThreeData = eventData.slice(0, 3); // Mengambil 3 data terakhir
             console.log(lastThreeData);
             setEvents(lastThreeData);
@@ -427,39 +427,39 @@ const Homepage = () => {
                         </h3>
                     </div>
                     <div class="grid justify-items-center items-center mobile:mb-20 mobile:mx-auto sm:grid-rows-1 sm:grid-flow-row lg:grid-rows-2 lg:grid-flow-col lg:mb-36">
-                        <div class="grid justify-items-center items-center bg-white drop-shadow-2xl rounded-3xl mobile:max-w-full mobile:row-span-1 mobile:p-0 mobile:mx-auto mobile:h-[98%] mobile:mt-12 lg:h-[83%] lg:col-span-1 lg:row-span-2 lg:w-[64%] lg:mr-0 lg:mt-12">
+                        <div class="grid justify-items-center items-center bg-white drop-shadow-2xl rounded-3xl mobile:max-w-full mobile:row-span-1 mobile:p-0 mobile:mx-auto mobile:h-[98%] mobile:mt-12 lg:h-[79%] lg:col-span-1 lg:row-span-2 lg:w-[64%] lg:mr-0 lg:mt-2">
                             <Calendar />
                         </div>
-                        <div class="text-xl font-bold mobile:p-4 mobile:mt-14 mobile:text-center lg:text-start lg:p-0 lg:mt-14">
+                        <div class="text-xl font-bold mobile:p-4 mobile:mt-14 mobile:text-center lg:text-start lg:p-0 lg:mt-16">
                             Daftar Event
                             <div class="grid gap-4 mt-4 mobile:grid-cols-1 mobile:grid-flow-row lg:grid-cols-3 lg:grid-flow-col">
                                 {events.map((event) => (
-                                    <div className="border-2 border-black p-2">
+                                    <div className="border-2 border-black p-2 h-[80%]">
                                         <img
-                                            class="max-h-[10rem] min-w-42"
-                                            src={
-                                                event.attributes?.foto_event?.data?.length > 0
-                                                    ? `https://websapa.biz.id${event.attributes?.foto_event?.data[0]?.attributes?.url}`
-                                                    : "https://via.placeholder.com/150" // Placeholder image
-                                            }
+                                            class="object-cover mobile:max-w-40 mobile:h-auto lg:h-full lg:w-40"
+                                            src={`https://websapa.biz.id${event.attributes?.foto_event?.data[0]?.attributes?.url}`}
+                                            onError={(e) => {
+                                                e.target.onerror = null; // Mencegah infinite loop
+                                                e.target.src = `https://cms-okoce-6629e06db84b.herokuapp.com${event.attributes?.foto_event?.data[0]?.attributes?.url}`;
+                                            }}
                                             alt={event.attributes?.judul_event || "Gambar Berita"}
                                         />
                                     </div>
                                 ))}
                             </div>
                         </div>
-                        <div class="text-xl font-bold mobile:p-4 mobile:mt-14 mobile:text-center lg:w-[64%] lg:text-start lg:p-0 lg:mt-6">
+                        <div class="text-xl font-bold mobile:p-4 mobile:mt-14 mobile:text-center lg:w-[64%] lg:text-start lg:p-0 lg:mt-0">
                             Daftar Berita
                             <div class="grid gap-4 mt-4 mobile:grid-cols-1 mobile:grid-flow-row lg:grid-cols-3 lg:grid-flow-col">
                                 {datas.map((data) => (
                                     <div className="border-2 border-black p-2">
                                         <img
                                             class="object-cover mobile:max-w-40 mobile:h-auto lg:h-full lg:w-40"
-                                            src={
-                                                data.attributes?.foto_berita?.data?.length > 0
-                                                    ? `https://cms-okoce-6629e06db84b.herokuapp.com${data.attributes?.foto_berita?.data[0]?.attributes?.url}`
-                                                    : "https://via.placeholder.com/150" // Placeholder image
-                                            }
+                                            src={`https://websapa.biz.id${data.attributes?.foto_berita?.data[0]?.attributes?.url}`}
+                                            onError={(e) => {
+                                                e.target.onerror = null; // Mencegah infinite loop
+                                                e.target.src = `https://cms-okoce-6629e06db84b.herokuapp.com${data.attributes?.foto_berita?.data[0]?.attributes?.url}`;
+                                            }}
                                             alt={data.attributes?.judul_berita || "Gambar Berita"}
                                         />
                                     </div>
@@ -482,11 +482,11 @@ const Homepage = () => {
                                     <div className="p-5">
                                         <img
                                             className="object-cover w-full mobile:h-36 lg:h-72"
-                                            src={
-                                                data.attributes?.foto_berita?.data?.length > 0
-                                                    ? `https://cms-okoce-6629e06db84b.herokuapp.com${data.attributes?.foto_berita?.data[0]?.attributes?.url}`
-                                                    : "https://via.placeholder.com/150" // Placeholder image
-                                            }
+                                            src={`https://websapa.biz.id${data.attributes?.foto_berita?.data[0]?.attributes?.url}`}
+                                            onError={(e) => {
+                                                e.target.onerror = null; // Mencegah infinite loop
+                                                e.target.src = `https://cms-okoce-6629e06db84b.herokuapp.com${data.attributes?.foto_berita?.data[0]?.attributes?.url}`;
+                                            }}
                                             alt={data.attributes?.judul_berita || "Gambar Berita"}
                                         />
                                         <div className="relative group mb-2 mt-6 h-20">

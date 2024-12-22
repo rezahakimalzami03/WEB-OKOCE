@@ -32,7 +32,7 @@ const Testimoni = () => {
           <h2 className="text-4xl font-bold my-14 text-center text-sky-700">Pendapat Mereka Tentang Kami!</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
             {/* Testimoni item 1 */}
-            <div className="bg-white shadow-lg rounded-lg overflow-hidden">
+            <div className="bg-white shadow-lg rounded-lg overflow-hidden grid grid-rows-1">
               <div className="p-4">
                 <p className="text-gray-700 text-base">
                   "Program OK OCE Indonesia mampu memberdayakan pengusaha kecil dan menengah melalui pelatihan kewirausahaan dan akses permodalan yang lebih mudah"
@@ -100,7 +100,7 @@ const Testimoni = () => {
             </div>
             {/* End Testimoni item 3 */}
             {/* Testimoni item 4 */}
-            <div className="bg-white shadow-lg rounded-lg overflow-hidden mobile:mt-2 lg:mt-[2rem]">
+            <div className="bg-white shadow-lg rounded-lg overflow-hidden mobile:mt-2 lg:mt-[2rem] grid grid-rows-1">
               <div className="p-4">
                 <p className="text-gray-700 text-base">
                   "Okoce ada dan pergerakannya sgt membantu byk rakyat salah satunya bisa membuka lapangan kerja dan pelaku UMKM pun bisa ikut bazaar dm2 dgn acara2 hebat... Espas Indonesia salah satu komunitas emak2 yg sgt terbantu dgn gerakan okoce ini.. Emak2 Espas sering ikut bazaar di acara okoce dan emak2 Espas byk yg sdh bikin usaha  rumahan .. Byk pelatihan jg dr okoce Indonesia... BRAVO OKOCE INDONESIA"
@@ -124,7 +124,7 @@ const Testimoni = () => {
             </div>
             {/* End Testimoni item 4 */}
             {/* Testimoni item 5 */}
-            <div className="bg-white shadow-lg rounded-lg overflow-hidden mobile:mt-2 lg:mt-[2rem]">
+            <div className="bg-white shadow-lg rounded-lg overflow-hidden mobile:mt-2 lg:mt-[2rem] grid grid-rows-1">
               <div className="p-4">
                 <p className="text-gray-700 text-base">
                   "Magang di OK OCE sangat menyenangkan dan seru, Teman-teman di sini sangat ramah dan selalu siap membantu, menciptakan lingkungan yang positif dan mendukung. Selain itu, pekerjaan yang diberikan benar-benar sesuai dengan jobdesk, sehingga saya bisa belajar banyak dan mengembangkan keterampilan sesuai bidang yang saya minati. Lingkungan yang kondusif dan suasana kerja yang penuh semangat"
