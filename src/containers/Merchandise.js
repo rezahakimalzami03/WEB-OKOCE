@@ -21,11 +21,9 @@ const Merchandise = () => {
             const merch = data.data;
 
             const merchandiseData = merch.map(item => {
-                const images = item.attributes.foto_merchandise?.data?.map(image => {
-                    const primaryImage = `https://websapa.biz.id${image.attributes.url}`;
-                    const fallbackImage = `https://cms-okoce-6629e06db84b.herokuapp.com${image.attributes.url}`;
-                    return { primary: primaryImage, fallback: fallbackImage };
-                }) || [];
+                const images = item.attributes.foto_merchandise.data.map(image => ({
+                    primary: image.attributes.url,
+                }));
 
                 return {
                     id: item.id,
@@ -81,25 +79,11 @@ const Merchandise = () => {
                                 <div className="mx-auto mobile:p-0 mobile:mb-6 mobile:w-full lg:py-8 lg:w-[20rem]">
                                     <div className="relative rounded-lg overflow-hidden shadow-lg">
                                         <div className="relative h-78">
-                                            {item.images.length > 0 ? (
-                                                <img
-                                                    src={item.images[currentImageIndexes[currentItemIndex]]?.primary}
-                                                    alt={item.judul}
-                                                    className="object-cover w-full h-full"
-                                                    onError={(e) => {
-                                                        e.target.onerror = null; // Mencegah infinite loop
-                                                        e.target.src =
-                                                            item.images[currentImageIndexes[currentItemIndex]]?.fallback ||
-                                                            '/fallback-image.jpg'; // Fallback ke sumber kedua atau placeholder
-                                                    }}
-                                                />
-                                            ) : (
-                                                <img
-                                                    src="/fallback-image.jpg"
-                                                    alt="Gambar tidak tersedia"
-                                                    className="object-cover w-full h-full"
-                                                />
-                                            )}
+                                            <img
+                                                src={item.images[currentImageIndexes[currentItemIndex]]?.primary}
+                                                alt={item.judul}
+                                                className="object-cover w-full h-full"
+                                            />
                                         </div>
                                         <button
                                             type="button"

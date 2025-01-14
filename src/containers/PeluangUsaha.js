@@ -6,18 +6,13 @@ import FloatingMenu from "../components/FloatingMenu";
 const cardClasses = 'bg-white p-4 rounded-lg shadow-md flex items-start cursor-pointer';
 
 const JobCard = ({ logo, title, location, job_system, category, onClick }) => {
-    const primaryUrl = logo ? `https://websapa.biz.id${logo}` : '/fallback-logo.jpg';
-    const fallbackUrl = logo ? `https://cms-okoce-6629e06db84b.herokuapp.com${logo}` : '/fallback-logo.jpg';
+
     return (
         <div className={cardClasses} onClick={onClick}>
             <img
-                src={primaryUrl}
+                src={logo}
                 alt="Company Logo"
                 className="w-20 max-h-20 mr-4 object-cover rounded-full"
-                onError={(e) => {
-                    e.target.onerror = null; // Mencegah infinite loop
-                    e.target.src = fallbackUrl; // Fallback URL
-                }}
             />
             <div>
                 <h3 className="text-lg font-semibold">{title}</h3>
@@ -69,7 +64,7 @@ const JobList = ({ onJobClick }) => {
                 <div className="mt-0" key={data.id}>
                     <div className="space-y-4 mt-5">
                         <JobCard
-                            logo={data.logo}
+                            logo={data.attributes?.foto_usaha?.data[0]?.attributes.url}
                             title={data.attributes?.judul_usaha}
                             location={data.attributes?.lokasi_usaha}
                             job_system={data.attributes?.sistem_kerja}
@@ -132,15 +127,9 @@ const PeluangUsaha = () => {
                                 <img
                                     src={
                                         jobDetails.attributes?.foto_usaha?.data?.[0]?.attributes?.url
-                                            ? `https://websapa.biz.id${jobDetails.attributes.foto_usaha.data[0].attributes.url}`
-                                            : "https://via.placeholder.com/150"
                                     }
                                     alt={jobDetails.attributes.judul_usaha || 'Peluang Usaha'}
                                     className="w-full object-cover rounded-full mobile:h-56 mobile:mt-8 lg:h-96"
-                                    onError={(e) => {
-                                        e.target.onerror = null; // Mencegah infinite loop
-                                        e.target.src = `https://cms-okoce-6629e06db84b.herokuapp.com${jobDetails.attributes?.foto_usaha?.data?.[0]?.attributes?.url}`;
-                                    }}
                                 />
 
                                 <h3 className="text-3xl mt-16 ml-1 font-bold text-center text-black mb-4">{jobDetails.attributes.judul_usaha}</h3>
