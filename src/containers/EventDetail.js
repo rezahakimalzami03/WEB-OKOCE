@@ -42,11 +42,7 @@ const EventDetail = () => {
                     {/* Gambar event */}
                     <img
                         className="object-cover w-full h-full"
-                        src={`https://websapa.biz.id${eventData.attributes?.foto_event?.data[0]?.attributes?.url}`}
-                        onError={(e) => {
-                            e.target.onerror = null; // Mencegah infinite loop
-                            e.target.src = `https://cms-okoce-6629e06db84b.herokuapp.com${eventData.attributes?.foto_event?.data[0]?.attributes?.url}`;
-                        }}
+                        src={eventData.attributes?.foto_event?.data[0]?.attributes?.url}
                         alt={eventData.attributes?.judul_event || "Gambar Berita"}
                     />
 
