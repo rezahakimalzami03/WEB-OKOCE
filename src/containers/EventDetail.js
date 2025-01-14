@@ -90,7 +90,7 @@ const EventDetail = () => {
                                 Kuota
                             </h3>
                             <p className="mt-2 text-black font-bold text-xl pl-3 py-1">
-                                {eventData.attributes?.quota_event}
+                                {eventData.attributes?.kuota_event}
                             </p>
                         </div>
                         <div className="mt-10 mb-6 bg-gray-100 col-span-2 w-64 rounded-xl my-4">

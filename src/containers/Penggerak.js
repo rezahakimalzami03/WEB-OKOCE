@@ -72,9 +72,6 @@ const Penggerak = () => {
 const PenggerakCard = ({ item }) => {
     const [isLoaded, setIsLoaded] = useState(false);
 
-    const primaryUrl = `https://websapa.biz.id${item.attributes?.foto_penggerak?.data?.[0]?.attributes?.url}`;
-    const fallbackUrl = `https://cms-okoce-6629e06db84b.herokuapp.com${item.attributes?.foto_penggerak?.data?.[0]?.attributes?.url}`;
-
     return (
         <div className="bg-white rounded-lg border drop-shadow-xl p-4">
             <div className="relative min-h-60 max-h-60 min-w-40 mx-auto">
@@ -85,13 +82,9 @@ const PenggerakCard = ({ item }) => {
                 )}
                 <img
                     className="min-h-60 max-h-60 min-w-40 mx-auto"
-                    src={primaryUrl}
+                    src={item.attributes?.foto_penggerak?.data[0]?.attributes?.url}
                     alt={item.attributes.nama_penggerak}
                     onLoad={() => setIsLoaded(true)}
-                    onError={(e) => {
-                        e.target.onerror = null; // Hindari infinite loop
-                        e.target.src = fallbackUrl;
-                    }}
                 />
             </div>
             <div className="px-1 py-4">
