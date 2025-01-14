@@ -1,8 +1,11 @@
-import React from "react";
+import { React, useEffect } from "react";
 import Youtube from "@components/Youtube";
 import FloatingMenu from "../components/FloatingMenu";
 
 const Anniversary = () => {
+    useEffect(() => {
+        window.scrollTo({ top: 0, behavior: 'smooth' }); // Gulir ke atas setiap kali halaman berubah
+    });
     return (
         <>
             <div class="mt-[6rem] bg-gray-400 w-full h-[20rem] grid justify-center content-center">

@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/alt-text */
-import React from "react";
+import { React, useEffect } from "react";
 import Header from "@img/headerdesapreneur.png";
 import TUJUAND1 from "@img/tujuand1.png";
 import TUJUAND2 from "@img/tujuand2.png";
@@ -9,6 +9,9 @@ import TUJUAND5 from "@img/tujuand5.png";
 import FloatingMenu from "../components/FloatingMenu";
 
 const Desapreneur = () => {
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' }); // Gulir ke atas setiap kali halaman berubah
+  });
   return (
     <>
       <div className="flex overflow-hidden relative flex-col justify-center items-center px-16 py-20 text-center text-white min-h-[677px] max-md:px-5">
@@ -103,21 +106,21 @@ const Desapreneur = () => {
 
       {/* Manfaat */}
       <div className="flex flex-col ml-2 mr-2 px-12 pt-7 pb-20 bg-sky-700 max-md:px-5">
-        <div className="text-2xl font-bold leading-8 text-white max-md:max-w-full">
+        <div className="text-2xl font-bold leading-8 mt-10 text-white max-md:max-w-full">
           Manfaat Program Desa Preneur
         </div>
-        <div className="mt-12 text-xl leading-8 text-justify text-white max-md:mt-10 max-md:max-w-full">
+        <div className="mt-4 text-xl leading-8 text-justify text-white max-md:mt-10 max-md:max-w-full">
           Dengan berpartisipasi dalam Program Desa Preuner, warga desa dapat
           menikmati berbagai manfaat, antara lain:
         </div>
-        <div className="mt-24 max-md:mt-10 max-md:max-w-full">
+        <div className="mt-14 max-md:mt-10 max-md:max-w-full">
           <div className="flex gap-4 max-md:flex-col max-md:gap-0">
             <div className="flex flex-col w-[33%] max-md:ml-0 max-md:w-full">
               <div className="flex flex-col grow text-white max-md:mt-10">
                 <div className="text-2xl font-bold leading-8">
                   Peningkatan Ekonomi Desa
                 </div>
-                <div className="mt-10 text-lg leading-7 text-justify max-md:mt-10">
+                <div className="mt-6 text-lg leading-7 text-justify max-md:mt-10">
                   Usaha yang berkembang akan meningkatkan pendapatan warga dan
                   perekonomian desa secara keseluruhan.
                 </div>
@@ -128,7 +131,7 @@ const Desapreneur = () => {
                 <div className="text-2xl font-bold leading-8">
                   Kemandirian Ekonomi
                 </div>
-                <div className="mt-12 text-lg leading-7 text-justify max-md:mt-10">
+                <div className="mt-6 text-lg leading-7 text-justify max-md:mt-10">
                   Mendorong kemandirian ekonomi warga desa melalui pengelolaan
                   usaha sendiri.
                 </div>
@@ -139,7 +142,7 @@ const Desapreneur = () => {
                 <div className="text-2xl font-bold leading-8">
                   Komunitas yang Lebih Kuat
                 </div>
-                <div className="mt-10 text-lg leading-7 text-justify max-md:mt-10">
+                <div className="mt-6 text-lg leading-7 text-justify max-md:mt-10">
                   Membangun rasa kebersamaan dan kerjasama di antara warga desa
                   melalui usaha kolektif.
                 </div>

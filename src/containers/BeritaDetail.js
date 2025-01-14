@@ -4,14 +4,15 @@ import { useParams } from 'react-router-dom';
 import iconCal from "@img/calendar.png";
 import iconAuth from "@img/writer.png";
 import FloatingMenu from '../components/FloatingMenu';
-
+import ModalLoading from '../components/modalLoading';
 
 const BeritaDetail = () => {
     const { id } = useParams();
     const [newsData, setNewsData] = useState(null);
-    const [loading, setLoading] = useState(true);
+    const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
+        setIsLoading(true);
         const fetchData = async () => {
             try {
                 const response = await fetch(`https://cms-okoce-6629e06db84b.herokuapp.com/api/beritas/${id}?populate=*`);
@@ -20,19 +21,17 @@ const BeritaDetail = () => {
                 }
                 const data = await response.json();
                 setNewsData(data.data);
-                setLoading(false);
             } catch (error) {
                 console.error('Error fetching news:', error);
-                setLoading(false);
+            } finally {
+                setIsLoading(false); // Set loading ke false setelah fetch selesai
             }
         };
 
         fetchData();
+        setIsLoading(false);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     }, [id]);
-
-    if (loading) {
-        return <p>Loading...</p>;
-    }
 
     if (!newsData) {
         return <p>Event tidak ditemukan</p>;
@@ -40,6 +39,7 @@ const BeritaDetail = () => {
 
     return (
         <>
+            <ModalLoading isOpen={isLoading} />
             <div className="bg-gray-200">
                 <div className="max-w-4xl mx-auto mt-24 p-4">
                     <div className="bg-white shadow-md rounded-lg p-10">

@@ -1,20 +1,28 @@
-/* eslint-disable jsx-a11y/alt-text */
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import BgEvent from "../asset/img/bg-event.webp";
 import { Link } from "react-router-dom";
 import FloatingMenu from "../components/FloatingMenu";
+import ModalLoading from "../components/modalLoading";
 
-const ITEMS_PER_PAGE = 9;  // Jumlah item per halaman
+const ITEMS_PER_PAGE = 9;
 
 const Event = () => {
     const [datas, setData] = useState([]);
-    const [currentPage, setCurrentPage] = useState(1); // State untuk halaman saat ini
+    const [currentPage, setCurrentPage] = useState(1);
+    const [isLoading, setIsLoading] = useState(false);
+
+    const contentRef = useRef(null); // Tambahkan useRef untuk elemen utama
 
     useEffect(() => {
         fetchData();
     }, []);
 
+    useEffect(() => {
+        window.scrollTo({ top: 0, behavior: 'smooth' }); // Gulir ke atas setiap kali halaman berubah
+    }, [currentPage]);
+
     const fetchData = async () => {
+        setIsLoading(true);
         try {
             const response = await fetch('https://cms-okoce-6629e06db84b.herokuapp.com/api/events?populate=*');
             if (!response.ok) {
@@ -23,35 +31,37 @@ const Event = () => {
             const data = await response.json();
             const eventData = data.data;
             eventData.sort((a, b) => b.id - a.id);
-            console.log(eventData)
             setData(eventData);
         } catch (error) {
-            console.error('Error fetching news:', error);
+            console.error('Error fetching events:', error);
             setData([]);
+        } finally {
+            setIsLoading(false);
         }
-    }
-
-    // Fungsi untuk menangani perubahan halaman
-    const handlePageChange = (page) => {
-        setCurrentPage(page);
     };
 
-    // Hitung total halaman
-    const totalPages = Math.ceil(datas.length / ITEMS_PER_PAGE);
+    const handlePageChange = (page) => {
+        setIsLoading(true);
+        setTimeout(() => {
+            setCurrentPage(page);
+            setIsLoading(false);
 
-    // Hitung index item yang harus ditampilkan pada halaman saat ini
+        }, 500);
+    };
+
+    const totalPages = Math.ceil(datas.length / ITEMS_PER_PAGE);
     const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
     const endIndex = startIndex + ITEMS_PER_PAGE;
     const currentItems = datas.slice(startIndex, endIndex);
 
     return (
         <>
+            <ModalLoading isOpen={isLoading} />
             <div className="block w-full mt-32">
                 <img className="mobile:w-full mobile:h-[12rem] lg:w-9/12 lg:h-[23rem] mx-auto" src={BgEvent} alt="header"></img>
             </div>
-            <div className="grid mb-20 mobile:grid-cols-1 mobile:grid-flow-row lg:w-11/12 lg:mx-auto lg:grid-cols-3 lg:grid-flow-row lg:gap-y-12 lg:gap-x-0 lg:mt-24">
+            <div ref={contentRef} className="grid mb-20 mobile:grid-cols-1 mobile:grid-flow-row lg:w-11/12 lg:mx-auto lg:grid-cols-3 lg:grid-flow-row lg:gap-y-12 lg:gap-x-0 lg:mt-24">
                 {currentItems.map((data, index) => (
-                    // URL gambar absolut
                     <div
                         key={index}
                         className="flex flex-col mx-auto w-5/6 max-md:ml-0 drop-shadow-xl max-md:w-full mobile:p-6 lg:p-0"
@@ -60,7 +70,7 @@ const Event = () => {
                             <img className="w-full shadow-sm aspect-square"
                                 src={`https://websapa.biz.id${data.attributes?.foto_event?.data[0]?.attributes?.url}`}
                                 onError={(e) => {
-                                    e.target.onerror = null; // Mencegah infinite loop
+                                    e.target.onerror = null;
                                     e.target.src = `https://cms-okoce-6629e06db84b.herokuapp.com${data.attributes?.foto_event?.data[0]?.attributes?.url}`;
                                 }}
                                 alt={data.attributes?.judul_event || "Gambar Berita"}
@@ -95,11 +105,8 @@ const Event = () => {
                             </div>
                         </div>
                     </div>
-                )
-                )}
-
+                ))}
             </div>
-            {/* Pagination Controls */}
             <div className="flex justify-center mt-8 py-8 mx-auto rounded-xl mobile:w-3/4 lg:w-1/2">
                 <button
                     onClick={() => handlePageChange(currentPage - 1)}
@@ -116,9 +123,9 @@ const Event = () => {
                     Selanjutnya
                 </button>
             </div>
-            <FloatingMenu />{" "}
+            <FloatingMenu />
         </>
     );
-}
+};
 
 export default Event;

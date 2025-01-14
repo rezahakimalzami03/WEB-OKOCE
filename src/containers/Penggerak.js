@@ -1,14 +1,21 @@
 import React, { useState, useEffect } from "react";
 import Header from "../asset/img/PenggerakOkOce.png";
+import ModalLoading from "../components/modalLoading";
 
 const Penggerak = () => {
     const [penggerak, setPenggerak] = useState([]);
+    const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
         fetchPenggerak();
     }, []);
 
+    useEffect(() => {
+        window.scrollTo({ top: 0, behavior: 'smooth' }); // Gulir ke atas setiap kali halaman berubah
+    });
+
     const fetchPenggerak = async () => {
+        setIsLoading(true);
         try {
             const response = await fetch('https://cms-okoce-6629e06db84b.herokuapp.com/api/penggerak-okoces?populate=*');
             if (!response.ok) {
@@ -19,11 +26,14 @@ const Penggerak = () => {
         } catch (error) {
             console.error('Error fetching penggerak:', error);
             setPenggerak([]);
+        } finally {
+            setIsLoading(false); // Set loading ke false setelah fetch selesai
         }
     };
 
     return (
         <>
+            <ModalLoading isOpen={isLoading} />
             <div className="w-full mt-24">
                 <img className="w-full h-auto" alt="" src={Header} />
             </div>

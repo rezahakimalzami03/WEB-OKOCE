@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/alt-text */
-import React from "react";
+import { React, useEffect } from "react";
 import PELAKSANA1 from "@img/emakkece/PELAKSANA1.png";
 import PELAKSANA2 from "@img/emakkece/PELAKSANA2.png";
 import PELAKSANA3 from "@img/emakkece/PELAKSANA3.png";
@@ -26,9 +26,10 @@ import FOTO1 from "@img/emakkece/FOTO1.png";
 import FOTO2 from "@img/emakkece/FOTO2.png";
 import FOTO3 from "@img/emakkece/FOTO3.png";
 
-
-
 const Emakkece = () => {
+    useEffect(() => {
+        window.scrollTo({ top: 0, behavior: 'smooth' }); // Gulir ke atas setiap kali halaman berubah
+    });
     return (
         <>
             <div className="px-20 py-20 bg-white max-md:px-5 mobile:mt-6 lg:mt-20">

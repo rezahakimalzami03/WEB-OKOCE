@@ -1,15 +1,22 @@
 /* eslint-disable jsx-a11y/alt-text */
 import React, { useState, useEffect } from "react";
 import FloatingMenu from "../components/FloatingMenu";
+import ModalLoading from "../components/modalLoading";
 
 const Donasi = () => {
     const [datas, setData] = useState([]);
+    const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
         fetchData();
     }, [])
 
+    useEffect(() => {
+        window.scrollTo({ top: 0, behavior: 'smooth' }); // Gulir ke atas setiap kali halaman berubah
+    });
+
     const fetchData = async () => {
+        setIsLoading(true);
         try {
             const response = await fetch(
                 "https://cms-okoce-6629e06db84b.herokuapp.com/api/donasis?populate=*"
@@ -25,11 +32,14 @@ const Donasi = () => {
             console.error("Error fetching donasi:", error);
             // Jika terjadi kesalahan, pastikan untuk mengatur data donasi menjadi array kosong
             setData([]);
+        } finally {
+            setIsLoading(false); // Set loading ke false setelah fetch selesai
         }
     };
 
     return (
         <>
+            <ModalLoading isOpen={isLoading} />
             {/* <!-- Jumbotron --> */}
             <div className="w-full grid justify-items-center items-center">
                 <div className="w-full my-36 max-w-6xl rounded-lg p-6 text-surface shadow-lg">
@@ -47,11 +57,7 @@ const Donasi = () => {
                                     <div className="flex flex-col w-[40%] max-md:ml-0 max-md:w-full">
                                         <img
                                             loading="lazy"
-                                            src={`https://websapa.biz.id${data.attributes?.foto_donasi?.data[0]?.attributes?.url}`}
-                                            onError={(e) => {
-                                                e.target.onerror = null; // Mencegah infinite loop
-                                                e.target.src = `https://cms-okoce-6629e06db84b.herokuapp.com${data.attributes?.foto_donasi?.data[0]?.attributes?.url}`;
-                                            }}
+                                            src={data.attributes?.foto_donasi?.data[0]?.attributes?.url}
                                             alt={data.attributes?.judul_berita || "Gambar Berita"}
                                             className="grow w-full h-auto shadow-sm max-md:max-w-full"
                                         />

@@ -2,18 +2,25 @@ import React, { useState, useEffect } from "react";
 import Header from '../asset/img/beritaheader.png';
 import { Link } from "react-router-dom";
 import FloatingMenu from "../components/FloatingMenu";
+import ModalLoading from "../components/modalLoading";
 
 const ITEMS_PER_PAGE = 9;  // Jumlah item per halaman
 
 const DaftarBerita = () => {
     const [datas, setData] = useState([]);
     const [currentPage, setCurrentPage] = useState(1); // State untuk halaman saat ini
+    const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
         fetchData();
     }, []);
 
+    useEffect(() => {
+        window.scrollTo({ top: 0, behavior: 'smooth' }); // Gulir ke atas setiap kali halaman berubah
+    }, [currentPage]);
+
     const fetchData = async () => {
+        setIsLoading(true);
         try {
             const response = await fetch('https://cms-okoce-6629e06db84b.herokuapp.com/api/beritas?populate=*&_sort=id:ASC&_cacheBuster=' + new Date().getTime());
             if (!response.ok) {
@@ -27,12 +34,18 @@ const DaftarBerita = () => {
         } catch (error) {
             console.error('Error fetching news:', error);
             setData([]);
+        } finally {
+            setIsLoading(false); // Set loading ke false setelah fetch selesai
         }
     };
 
     // Fungsi untuk menangani perubahan halaman
     const handlePageChange = (page) => {
-        setCurrentPage(page);
+        setIsLoading(true);
+        setTimeout(() => {
+            setCurrentPage(page);
+            setIsLoading(false);
+        }, 500);
     };
 
     // Hitung total halaman
@@ -45,6 +58,7 @@ const DaftarBerita = () => {
 
     return (
         <>
+            <ModalLoading isOpen={isLoading} />
             <div className="bg-gray-200">
                 <div className="block w-full mt-24 pt-12">
                     <img className="border-8 border-white mobile:w-full mobile:object-cover mobile:h-[11.3rem] lg:w-11/12 lg:h-[23rem] mx-auto rounded-xl" src={Header} alt="" />
