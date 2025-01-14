@@ -68,11 +68,7 @@ const Event = () => {
                     >
                         <div className="flex flex-col grow max-md:mt-10">
                             <img className="w-full shadow-sm aspect-square"
-                                src={`https://websapa.biz.id${data.attributes?.foto_event?.data[0]?.attributes?.url}`}
-                                onError={(e) => {
-                                    e.target.onerror = null;
-                                    e.target.src = `https://cms-okoce-6629e06db84b.herokuapp.com${data.attributes?.foto_event?.data[0]?.attributes?.url}`;
-                                }}
+                                src={data.attributes?.foto_event?.data[0]?.attributes?.url}
                                 alt={data.attributes?.judul_event || "Gambar Berita"}
                             />
                             <div className="flex flex-col px-4 py-5 w-full bg-white shadow-sm">
