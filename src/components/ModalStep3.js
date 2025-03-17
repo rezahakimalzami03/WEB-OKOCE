@@ -10,15 +10,19 @@ const ModalStep3 = ({ onClose }) => {
 
     const fetchEvent = async () => {
         try {
-            const response = await fetch('https://cms-okoce-6629e06db84b.herokuapp.com/api/events?populate=*');
+            const response = await fetch('/data/event.json'); // Pastikan path benar
             if (!response.ok) {
                 throw new Error('Gagal mengambil data event');
             }
             const data = await response.json();
-            const newsData = data.data;
-            newsData.sort((a, b) => b.id - a.id);
-            const singleData = newsData[0];
-            console.log(singleData);
+
+            // Jika data berbentuk array langsung, gunakan ini:
+            const sortedData = data.sort((a, b) => b.id - a.id);
+
+            // Ambil satu data terbaru
+            const singleData = sortedData[0];
+            console.log("Data Event:", singleData);
+
             setData([singleData]);
         } catch (error) {
             console.error('Error fetching events:', error);
@@ -32,15 +36,15 @@ const ModalStep3 = ({ onClose }) => {
                 {datas.map((data, index) =>
                     <div key={index} className="flex flex-col mx-auto h-auto max-md:ml-0 drop-shadow-xl mobile:px-6 mobile:w-full lg:p-0 lg:w-5/6">
                         <div className="flex flex-col grow max-md:mt-10">
-                            <img src={data.attributes?.foto_event?.data[0]?.attributes?.url}
+                            <img src={data.foto_event}
                                 loading="lazy" className="w-full object-cover shadow-sm aspect-square mobile:h-54 lg:h-72" alt='' />
                             <div className="flex flex-col px-4 py-5 w-full bg-white shadow-sm">
                                 <div className="relative group mb-2 mt-2 h-10">
                                     <div className="text-base leading-7 text-black font-bold text-xl overflow-hidden line-clamp-2">
-                                        {data.attributes?.judul_event}
+                                        {data.judul_event}
                                     </div>
                                     <div className="absolute left-0 bottom-full mb-2 hidden w-full text-xs text-white bg-black p-2 rounded group-hover:block">
-                                        {data.attributes?.judul_event}
+                                        {data.judul_event}
                                     </div>
                                 </div>
                                 <Link to={`/event/${data.id}`}>

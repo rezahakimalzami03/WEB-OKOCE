@@ -80,44 +80,38 @@ const Homepage = () => {
 
     const fetchDataNews = async () => {
         try {
-            const response = await fetch(
-                "https://cms-okoce-6629e06db84b.herokuapp.com/api/beritas?populate=*"
-            );
+            const response = await fetch('/data/berita.json'); // Mengambil data berita dari file lokal
             if (!response.ok) {
                 throw new Error("Gagal mengambil data berita");
             }
             const data = await response.json();
-            // Extract the data array from the response
-            const newsData = data.data;
-            newsData.sort((a, b) => b.id - a.id);
-            const lastThreeData = newsData.slice(0, 3); // Mengambil 3 data terakhir
+
+            // Mengurutkan berita berdasarkan ID terbaru
+            const sortedData = data.sort((a, b) => a.id - b.id);
+            const lastThreeData = sortedData.slice(0, 3); // Mengambil 3 data terakhir
             console.log(lastThreeData);
             setData(lastThreeData);
         } catch (error) {
-            console.error("Error fetching employees:", error);
-            // Jika terjadi kesalahan, pastikan untuk mengatur employees menjadi array kosong
+            console.error("Error fetching berita:", error);
             setData([]);
         }
     };
 
     const fetchDataEvents = async () => {
         try {
-            const response = await fetch(
-                "https://cms-okoce-6629e06db84b.herokuapp.com/api/events?populate=*"
-            );
+            const response = await fetch('/data/event.json'); // Mengambil data berita dari file lokal
             if (!response.ok) {
-                throw new Error("Gagal mengambil data event");
+                throw new Error("Gagal mengambil data berita");
             }
             const data = await response.json();
-            // Extract the data array from the response
-            const eventData = data.data;
-            eventData.sort((a, b) => b.id - a.id);
+
+            // Mengurutkan berita berdasarkan ID terbaru
+            const eventData = data.sort((a, b) => a.id - b.id);
             const lastThreeData = eventData.slice(0, 3); // Mengambil 3 data terakhir
             console.log(lastThreeData);
             setEvents(lastThreeData);
         } catch (error) {
-            console.error("Error fetching employees:", error);
-            // Jika terjadi kesalahan, pastikan untuk mengatur employees menjadi array kosong
+            console.error("Error fetching event:", error);
             setEvents([]);
         }
     };
@@ -437,8 +431,8 @@ const Homepage = () => {
                                     <div className="border-2 border-black p-2 h-[80%]">
                                         <img
                                             class="object-cover mobile:max-w-40 mobile:h-auto lg:h-full lg:w-40"
-                                            src={event.attributes?.foto_event?.data[0]?.attributes?.url}
-                                            alt={event.attributes?.judul_event || "Gambar Berita"}
+                                            src={event.foto_event}
+                                            alt={event.judul_event}
                                         />
                                     </div>
                                 ))}
@@ -451,8 +445,8 @@ const Homepage = () => {
                                     <div className="border-2 border-black p-2">
                                         <img
                                             class="object-cover mobile:max-w-40 mobile:h-auto lg:h-full lg:w-40"
-                                            src={data.attributes?.foto_berita?.data[0]?.attributes?.url}
-                                            alt={data.attributes?.judul_berita || "Gambar Berita"}
+                                            src={data.foto_berita}
+                                            alt={data.judul_berita || "Gambar Berita"}
                                         />
                                     </div>
                                 ))}
@@ -474,23 +468,23 @@ const Homepage = () => {
                                     <div className="p-5">
                                         <img
                                             className="object-cover w-full mobile:h-36 lg:h-72"
-                                            src={data.attributes?.foto_berita?.data[0]?.attributes?.url}
-                                            alt={data.attributes?.judul_berita || "Gambar Berita"}
+                                            src={data.foto_berita}
+                                            alt={data.judul_berita || "Gambar Berita"}
                                         />
                                         <div className="relative group mb-2 mt-6 h-20">
                                             <div className="text-base leading-7 text-black font-bold text-xl overflow-hidden line-clamp-2">
-                                                {data.attributes?.judul_berita}
+                                                {data.judul_berita}
                                             </div>
                                             <div className="absolute left-0 bottom-full mb-2 hidden w-full text-xs text-white bg-black p-2 rounded group-hover:block">
-                                                {data.attributes?.judul_berita}
+                                                {data.judul_berita}
                                             </div>
                                         </div>
                                         <p className="text-black">
-                                            Author: {data.attributes?.autor_berita}
+                                            Author: {data.autor_berita}
                                         </p>
                                         <div className="flex space-x-4 my-4">
                                             <span className="bg-black text-white text-sm font-semibold mr-2 px-2.5 py-0.5 rounded">
-                                                Tanggal Publish: {data.attributes?.tanggal_berita}
+                                                Tanggal Publish: {data.tanggal_berita}
                                             </span>
                                         </div>
                                         <Link to={`/daftarberita/${data.id}`}>
