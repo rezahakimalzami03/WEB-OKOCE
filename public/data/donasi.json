@@ -1,0 +1,14 @@
+[
+    {
+        "id": 1,
+        "judul_donasi": "YAYASAN OK OCE KEMANUSIAN",
+        "deskripsi_donasi": "Donasi untuk Yayasan OK OCE Kemanusiaan sangat penting dalam mendukung berbagai program kemanusiaan yang bertujuan meningkatkan kesejahteraan masyarakat yang membutuhkan. Dengan memberikan donasi, Anda turut berkontribusi dalam penyediaan bantuan sosial, pelatihan kewirausahaan, dan berbagai inisiatif kemanusiaan lainnya yang dilaksanakan oleh yayasan. Donasi Anda membantu menciptakan peluang ekonomi, memperkuat kapasitas masyarakat lokal, dan memberikan dukungan bagi mereka yang terdampak oleh kondisi sulit. Bersama Yayasan OK OCE Kemanusiaan, mari wujudkan kepedulian dan solidaritas untuk membangun masyarakat yang lebih mandiri dan sejahtera.",
+        "foto_donasi": "/images/donasi_kemanusiaan.png"
+    },
+    {
+        "id": 2,
+        "judul_donasi": "OK OCE WAKAF",
+        "deskripsi_donasi": "Donasi untuk OK OCE Wakaf memainkan peran vital dalam mendukung berbagai program yang bertujuan untuk meningkatkan kesejahteraan dan keberlanjutan ekonomi masyarakat. Melalui kontribusi Anda, OK OCE Wakaf dapat menyediakan pelatihan kewirausahaan, pendampingan bisnis, serta akses ke modal dan sumber daya bagi para pelaku usaha mikro, kecil, dan menengah (UMKM). Donasi ini juga membantu dalam pembangunan fasilitas umum yang bermanfaat bagi komunitas, seperti pusat pelatihan, pasar, dan infrastruktur pendukung lainnya. Dengan mendonasikan melalui OK OCE Wakaf, Anda turut berperan dalam menciptakan ekosistem ekonomi yang kuat, mandiri, dan berkelanjutan, sehingga dapat membawa perubahan positif bagi banyak orang.",
+        "foto_donasi": "/images/donasi_wakaf.png"
+    }
+]

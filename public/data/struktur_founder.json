@@ -1,0 +1,14 @@
+[
+    {
+        "id": 1,
+        "nama": "Sandiaga Uno",
+        "jabatan": "Founder",
+        "foto": "/images/sandiagauno.webp"
+    },
+    {
+        "id": 2,
+        "nama": "Indra Uno",
+        "jabatan": "Founder & Ketua Dewan Pembina",
+        "foto": "/images/indrauno.webp"
+    }
+]

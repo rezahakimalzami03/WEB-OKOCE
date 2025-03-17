@@ -24,16 +24,18 @@ const Event = () => {
     const fetchData = async () => {
         setIsLoading(true);
         try {
-            const response = await fetch('https://cms-okoce-6629e06db84b.herokuapp.com/api/events?populate=*');
+            const response = await fetch('/data/event.json'); // Mengambil data berita dari file lokal
             if (!response.ok) {
-                throw new Error('Gagal mengambil data event');
+                throw new Error("Gagal mengambil data berita");
             }
             const data = await response.json();
-            const eventData = data.data;
-            eventData.sort((a, b) => b.id - a.id);
-            setData(eventData);
+
+            // Mengurutkan berita berdasarkan ID terbaru
+            const sortedData = data.sort((a, b) => a.id - b.id);
+
+            setData(sortedData); // Menyimpan data ke state
         } catch (error) {
-            console.error('Error fetching events:', error);
+            console.error("Error fetching berita:", error);
             setData([]);
         } finally {
             setIsLoading(false);
@@ -68,29 +70,29 @@ const Event = () => {
                     >
                         <div className="flex flex-col grow max-md:mt-10">
                             <img className="w-full shadow-sm aspect-square"
-                                src={data.attributes?.foto_event?.data[0]?.attributes?.url}
-                                alt={data.attributes?.judul_event || "Gambar Berita"}
+                                src={data.foto_event}
+                                alt={data.judul_event || "Gambar Berita"}
                             />
                             <div className="flex flex-col px-4 py-5 w-full bg-white shadow-sm">
                                 <div className="relative group mb-2 mt-2 h-10">
                                     <div className="text-base leading-7 text-black font-bold text-xl overflow-hidden line-clamp-2">
-                                        {data.attributes?.judul_event}
+                                        {data.judul_event}
                                     </div>
                                     <div className="absolute left-0 bottom-full mb-2 hidden w-full text-xs text-white bg-black p-2 rounded group-hover:block">
-                                        {data.attributes?.judul_event}
+                                        {data.judul_event}
                                     </div>
                                 </div>
                                 <div className="flex gap-5 justify-between mt-7 text-xs leading-5">
                                     <div className="flex flex-col">
                                         <div className="text-neutral-400">
-                                            {data.attributes.tanggal_event}
+                                            {data.tanggal_event}
                                         </div>
                                         <div className="mt-2.5 text-sky-700">
-                                            {data.attributes.harga_event}
+                                            {data.harga_event}
                                         </div>
                                     </div>
                                     <div className="self-start mt-8 text-right text-red-600">
-                                        {data.attributes.point_event} Points
+                                        {data.point_event} Points
                                     </div>
                                 </div>
                                 <Link to={`/event/${data.id}`}>

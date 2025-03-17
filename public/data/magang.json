@@ -1,0 +1,143 @@
+[
+    {
+        "id": 1,
+        "judul_magang": "Frontend Developer",
+        "lokasi_magang": "Jakarta Selatan - Onsite",
+        "durasi_magang": "5 bulan",
+        "jenis_magang": "MSIB - WFO (Work From Office)",
+        "tentang_program": "Mengembangkan dan memelihara tampilan website menggunakan React dan TailwindCSS.",
+        "kompetensi": [
+            "Penguasaan ReactJS",
+            "Membuat UI responsif",
+            "Integrasi API dengan frontend",
+            "Penggunaan Git dan CI/CD",
+            "Debugging dan troubleshooting"
+        ],
+        "kriteria_peserta": [
+            "Mahasiswa aktif atau fresh graduate",
+            "Mampu bekerja dalam tim",
+            "Memahami dasar-dasar ReactJS",
+            "Terbiasa dengan Git",
+            "Mau belajar dan berkembang"
+        ],
+        "benefit_magang": "BBH (Bantuan Biaya Hidup) dan Travel",
+        "url_msib": "https://kampusmerdeka.kemdikbud.go.id/program/msib"
+    },
+    {
+        "id": 2,
+        "judul_magang": "Data Analyst",
+        "perusahaan": "OK OCE Indonesia",
+        "lokasi_magang": "Jakarta Selatan - Onsite",
+        "durasi_magang": "5 bulan",
+        "jenis_magang": "MSIB - WFO (Work From Office)",
+        "rincian_kegiatan": "Menganalisis data bisnis, membuat dashboard interaktif, dan memberikan insight berbasis data.",
+        "kompetensi": [
+            "SQL dan Python untuk analisis data",
+            "Penggunaan Excel dan Google Sheets",
+            "Visualisasi data dengan Tableau / Power BI",
+            "Statistik dasar dan machine learning",
+            "Komunikasi data dan storytelling"
+        ],
+        "kriteria_peserta": [
+            "Mahasiswa S1 bidang IT, Statistik, atau Manajemen",
+            "Mampu menggunakan SQL dan Python",
+            "Memahami dasar-dasar data visualization",
+            "Berpikir kritis dan analitis",
+            "Mau belajar teknologi baru"
+        ],
+        "benefit": "BBH (Bantuan Biaya Hidup) dan Travel",
+        "url_msib": "https://kampusmerdeka.kemdikbud.go.id/program/msib"
+    },
+    {
+        "id": 3,
+        "judul_magang": "Digital Learning & Skill Development Division",
+        "lokasi_magang": "Jakarta Selatan - Onsite",
+        "durasi_magang": "5 bulan",
+        "jenis_magang": "MSIB - WFO (Work From Office)",
+        "tentang_program": "Mengembangkan konten pembelajaran digital, merancang strategi edukasi, dan menganalisis efektivitas pembelajaran.",
+        "kompetensi": [
+            "Desain instruksional",
+            "E-learning development",
+            "Analisis efektivitas pembelajaran",
+            "Pembuatan modul interaktif",
+            "Pengelolaan Learning Management System (LMS)"
+        ],
+        "kriteria_peserta": [
+            "Mahasiswa bidang Pendidikan, IT, atau Psikologi",
+            "Mampu membuat konten digital",
+            "Terbiasa dengan Learning Management System",
+            "Mau belajar dan beradaptasi cepat"
+        ],
+        "benefit_magang": "Akses ke pelatihan eksklusif dan sertifikasi",
+        "url_msib": "https://kampusmerdeka.kemdikbud.go.id/program/msib"
+    },
+    {
+        "id": 4,
+        "judul_magang": "Financial Advisor",
+        "lokasi_magang": "Jakarta Selatan - Onsite",
+        "durasi_magang": "5 bulan",
+        "jenis_magang": "MSIB - WFO (Work From Office)",
+        "tentang_program": "Menganalisis kondisi keuangan klien dan memberikan rekomendasi investasi serta perencanaan keuangan.",
+        "kompetensi": [
+            "Analisis keuangan",
+            "Perencanaan investasi",
+            "Manajemen risiko keuangan",
+            "Komunikasi dan negosiasi",
+            "Pemahaman tentang produk keuangan"
+        ],
+        "kriteria_peserta": [
+            "Mahasiswa Ekonomi, Manajemen, atau Akuntansi",
+            "Memiliki minat dalam investasi dan keuangan",
+            "Kemampuan analisis data yang baik",
+            "Mampu berkomunikasi dengan baik"
+        ],
+        "benefit_magang": "Bonus kinerja dan pelatihan intensif",
+        "url_msib": "https://kampusmerdeka.kemdikbud.go.id/program/msib"
+    },
+    {
+        "id": 5,
+        "judul_magang": "Strategic Growth & Coaching Division",
+        "lokasi_magang": "Jakarta Selatan - Onsite",
+        "durasi_magang": "5 bulan",
+        "jenis_magang": "MSIB - WFO (Work From Office)",
+        "tentang_program": "Membantu perencanaan strategi pertumbuhan bisnis dan mendukung pelatihan serta coaching untuk mitra perusahaan.",
+        "kompetensi": [
+            "Strategi bisnis dan pertumbuhan",
+            "Analisis pasar",
+            "Manajemen proyek",
+            "Coaching dan mentoring",
+            "Pemecahan masalah bisnis"
+        ],
+        "kriteria_peserta": [
+            "Mahasiswa Manajemen, Bisnis, atau Psikologi",
+            "Memiliki minat dalam coaching dan pengembangan bisnis",
+            "Terbiasa dengan analisis pasar",
+            "Mampu bekerja secara kolaboratif"
+        ],
+        "benefit_magang": "Koneksi luas dengan pelaku industri dan kesempatan karir",
+        "url_msib": "https://kampusmerdeka.kemdikbud.go.id/program/msib"
+    },
+    {
+        "id": 6,
+        "judul_magang": "Digital Marketing Specialist",
+        "lokasi_magang": "Jakarta Selatan - Onsite",
+        "durasi_magang": "5 bulan",
+        "jenis_magang": "MSIB - WFO (Work From Office)",
+        "tentang_program": "Membantu strategi pemasaran digital, optimasi SEO, periklanan online, dan manajemen media sosial.",
+        "kompetensi": [
+            "SEO dan SEM",
+            "Strategi pemasaran digital",
+            "Pembuatan konten kreatif",
+            "Google Ads & Meta Ads",
+            "Analisis data marketing"
+        ],
+        "kriteria_peserta": [
+            "Mahasiswa Pemasaran, IT, atau Komunikasi",
+            "Memahami dasar-dasar SEO dan SEM",
+            "Terbiasa dengan Google Analytics",
+            "Kreatif dan inovatif"
+        ],
+        "benefit_magang": "Akses ke alat digital premium dan pelatihan eksklusif",
+        "url_msib": "https://kampusmerdeka.kemdikbud.go.id/program/msib"
+    }
+]

@@ -437,11 +437,7 @@ const Homepage = () => {
                                     <div className="border-2 border-black p-2 h-[80%]">
                                         <img
                                             class="object-cover mobile:max-w-40 mobile:h-auto lg:h-full lg:w-40"
-                                            src={`https://websapa.biz.id${event.attributes?.foto_event?.data[0]?.attributes?.url}`}
-                                            onError={(e) => {
-                                                e.target.onerror = null; // Mencegah infinite loop
-                                                e.target.src = `https://cms-okoce-6629e06db84b.herokuapp.com${event.attributes?.foto_event?.data[0]?.attributes?.url}`;
-                                            }}
+                                            src={event.attributes?.foto_event?.data[0]?.attributes?.url}
                                             alt={event.attributes?.judul_event || "Gambar Berita"}
                                         />
                                     </div>
@@ -455,11 +451,7 @@ const Homepage = () => {
                                     <div className="border-2 border-black p-2">
                                         <img
                                             class="object-cover mobile:max-w-40 mobile:h-auto lg:h-full lg:w-40"
-                                            src={`https://websapa.biz.id${data.attributes?.foto_berita?.data[0]?.attributes?.url}`}
-                                            onError={(e) => {
-                                                e.target.onerror = null; // Mencegah infinite loop
-                                                e.target.src = `https://cms-okoce-6629e06db84b.herokuapp.com${data.attributes?.foto_berita?.data[0]?.attributes?.url}`;
-                                            }}
+                                            src={data.attributes?.foto_berita?.data[0]?.attributes?.url}
                                             alt={data.attributes?.judul_berita || "Gambar Berita"}
                                         />
                                     </div>
@@ -482,11 +474,7 @@ const Homepage = () => {
                                     <div className="p-5">
                                         <img
                                             className="object-cover w-full mobile:h-36 lg:h-72"
-                                            src={`https://websapa.biz.id${data.attributes?.foto_berita?.data[0]?.attributes?.url}`}
-                                            onError={(e) => {
-                                                e.target.onerror = null; // Mencegah infinite loop
-                                                e.target.src = `https://cms-okoce-6629e06db84b.herokuapp.com${data.attributes?.foto_berita?.data[0]?.attributes?.url}`;
-                                            }}
+                                            src={data.attributes?.foto_berita?.data[0]?.attributes?.url}
                                             alt={data.attributes?.judul_berita || "Gambar Berita"}
                                         />
                                         <div className="relative group mb-2 mt-6 h-20">

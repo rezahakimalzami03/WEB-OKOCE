@@ -1,0 +1,20 @@
+[
+    {
+        "id": 1,
+        "nama": "Iim Rusyamsi",
+        "jabatan": "Ketua Umum",
+        "foto": "/images/iim.webp"
+    },
+    {
+        "id": 2,
+        "nama": "Sahmullah Rivqi",
+        "jabatan": "Sekretaris Jendral",
+        "foto": "/images/rivqi.webp"
+    },
+    {
+        "id": 3,
+        "nama": "Farid Rivai",
+        "jabatan": "Bendahara Umum",
+        "foto": "/images/farid.webp"
+    }
+]

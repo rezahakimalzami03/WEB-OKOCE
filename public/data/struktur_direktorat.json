@@ -1,0 +1,86 @@
+[
+    {
+        "id": 1,
+        "nama": "Ayad ALS",
+        "jabatan": "Direktur Kerjasama Pemerintah",
+        "foto": "/images/ayat.webp"
+    },
+    {
+        "id": 2,
+        "nama": "Abba Zubair Al Awwam",
+        "jabatan": "Direktur Kerja Sama dan Pendidikan",
+        "foto": "/images/azwa.webp"
+    },
+    {
+        "id": 3,
+        "nama": "Ferdian",
+        "jabatan": "Direktur Kerjasama Swasta",
+        "foto": "/images/ferdian.webp"
+    },
+    {
+        "id": 4,
+        "nama": "Rully Mustaqimah",
+        "jabatan": "Direktur Kerjasama Penggerak",
+        "foto": "/images/rullymusta.webp"
+    },
+    {
+        "id": 5,
+        "nama": "Rully Mardjono",
+        "jabatan": "Direktur Data dan Riset",
+        "foto": "/images/rullymar.webp"
+    },
+    {
+        "id": 6,
+        "nama": "Sulistio",
+        "jabatan": "Direktur Program",
+        "foto": "/images/sulis.webp"
+    },
+    {
+        "id": 7,
+        "nama": "Rahmiyati Yahya",
+        "jabatan": "Direktur Legal",
+        "foto": "/images/rahmiyati.webp"
+    },
+    {
+        "id": 8,
+        "nama": "Iqbal Aldilas",
+        "jabatan": "Direktur Optimasi Digital",
+        "foto": "/images/iqbal.webp"
+    },
+    {
+        "id": 9,
+        "nama": "Antoko Nugroho",
+        "jabatan": "PLT. Direktur Humas dan Promosi",
+        "foto": "/images/antoko.webp"
+    },
+    {
+        "id": 10,
+        "nama": "Munawar Aziz",
+        "jabatan": "Manager Kurikulum Direktorat Program",
+        "foto": "/images/munawar.webp"
+    },
+    {
+        "id": 11,
+        "nama": "Irana L Meriam",
+        "jabatan": "Manager Pemberdayaan Usaha Direktorat Program",
+        "foto": "/images/nana.webp"
+    },
+    {
+        "id": 12,
+        "nama": "Hilman",
+        "jabatan": "Manager Kerjasama Sekolah / Pesantren",
+        "foto": "/images/hilman.webp"
+    },
+    {
+        "id": 13,
+        "nama": "Indah Nursanti",
+        "jabatan": "Manager Kerjasama Penggerak",
+        "foto": "/images/indah.webp"
+    },
+    {
+        "id": 14,
+        "nama": "Seftyana",
+        "jabatan": "Manager Kerjasama Kampus",
+        "foto": "/images/seftyana.webp"
+    }
+]

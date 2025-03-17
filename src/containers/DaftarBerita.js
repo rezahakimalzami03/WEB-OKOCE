@@ -22,20 +22,21 @@ const DaftarBerita = () => {
     const fetchData = async () => {
         setIsLoading(true);
         try {
-            const response = await fetch('https://cms-okoce-6629e06db84b.herokuapp.com/api/beritas?populate=*&_sort=id:ASC&_cacheBuster=' + new Date().getTime());
+            const response = await fetch('/data/berita.json'); // Mengambil data berita dari file lokal
             if (!response.ok) {
-                throw new Error('Gagal mengambil data berita');
+                throw new Error("Gagal mengambil data berita");
             }
             const data = await response.json();
-            const newsData = data.data;
-            newsData.sort((a, b) => b.id - a.id);
-            console.log(newsData);
-            setData(newsData);
+
+            // Mengurutkan berita berdasarkan ID terbaru
+            const sortedData = data.sort((a, b) => a.id - b.id);
+
+            setData(sortedData); // Menyimpan data ke state
         } catch (error) {
-            console.error('Error fetching news:', error);
+            console.error("Error fetching berita:", error);
             setData([]);
         } finally {
-            setIsLoading(false); // Set loading ke false setelah fetch selesai
+            setIsLoading(false);
         }
     };
 
@@ -68,20 +69,20 @@ const DaftarBerita = () => {
                         <div key={index} className="w-full mx-auto p-4">
                             <div className="bg-white shadow-md rounded-lg lg:mr-1">
                                 <div className="p-5">
-                                    <img className="object-cover w-full mobile:h-36 lg:h-96" src={data.attributes?.foto_berita?.data[0]?.attributes?.url}
-                                        alt={data.attributes?.judul_berita || "Gambar Berita"} />
+                                    <img className="object-cover w-full mobile:h-36 lg:h-96" src={data.foto_berita}
+                                        alt={data.judul_berita || "Gambar Berita"} />
                                     <div className="relative group mt-6 h-20">
                                         <div className="text-base leading-7 text-black font-bold text-xl overflow-hidden line-clamp-2">
-                                            {data.attributes?.judul_berita}
+                                            {data.judul_berita}
                                         </div>
                                         <div className="absolute left-0 bottom-full mb-2 hidden w-full text-xs text-white bg-black p-2 rounded group-hover:block">
-                                            {data.attributes?.judul_berita}
+                                            {data.judul_berita}
                                         </div>
                                     </div>
-                                    <p className="text-red-500 font-medium">Author: {data?.attributes?.autor_berita}</p>
+                                    <p className="text-red-500 font-medium">Author: {data.autor_berita}</p>
                                     <div className="flex space-x-4 my-4">
                                         <span className="bg-gray-200 text-black text-sm font-semibold mr-2 px-2.5 py-0.5 rounded">
-                                            Tanggal Publish: {data.attributes?.tanggal_berita}
+                                            Tanggal Publish: {data.tanggal_berita}
                                         </span>
                                     </div>
                                     <Link to={`/daftarberita/${data.id}`}>

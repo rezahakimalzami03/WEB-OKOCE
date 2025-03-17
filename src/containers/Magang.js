@@ -29,17 +29,14 @@ const JobList = ({ onJobClick }) => {
 
     const fetchDataMagang = async () => {
         try {
-            const response = await fetch('https://cms-okoce-6629e06db84b.herokuapp.com/api/magangs?populate=*');
+            const response = await fetch('/data/magang.json'); // Mengambil data dari folder public
             if (!response.ok) {
-                throw new Error('Gagal mengambil data magang');
+                throw new Error('Gagal mengambil data peluang usaha');
             }
             const data = await response.json();
-            const internData = data.data;
-            internData.sort((a, b) => a.id - b.id);
-            console.log(internData);
-            setData(internData);
+            setData(data); // Langsung set data tanpa transformasi tambahan
         } catch (error) {
-            console.error('Error fetching internship data:', error);
+            console.error('Error fetching peluang usaha:', error);
             setData([]);
         }
     };
@@ -50,10 +47,10 @@ const JobList = ({ onJobClick }) => {
                 <div className="mt-0" key={data.id}>
                     <div className="space-y-4 mt-5">
                         <JobCard
-                            title={data.attributes.judul_magang}
+                            title={data.judul_magang}
                             company="Perkumpulan Gerakan OK OCE"
                             location="Kota Jakarta Selatan (WFO)"
-                            duration={data.attributes.durasi_magang}
+                            duration={data.durasi_magang}
                             type="MSIB"
                             onClick={() => onJobClick(data.id)}
                         />
@@ -76,12 +73,20 @@ const Magang = () => {
 
     const fetchJobDetails = async (id) => {
         try {
-            const response = await fetch(`https://cms-okoce-6629e06db84b.herokuapp.com/api/magangs/${id}?populate=*`);
+            const response = await fetch('/data/magang.json'); // Mengambil data dari file lokal
             if (!response.ok) {
                 throw new Error('Gagal mengambil detail magang');
             }
             const data = await response.json();
-            setJobDetails(data.data);
+
+            // Cari data magang berdasarkan ID
+            const selectedJob = data.find(item => item.id === id);
+
+            if (!selectedJob) {
+                throw new Error('Data tidak ditemukan');
+            }
+
+            setJobDetails(selectedJob);
         } catch (error) {
             console.error('Error fetching internship details:', error);
             setJobDetails(null);
@@ -111,10 +116,10 @@ const Magang = () => {
                         <div className="w-full h-full text-zinc-400">
                             <div className="mobile:ml-0 mobile:px-4 lg:mt-10 lg:ml-2 lg:pr-16 lg:pl-14">
                                 <img src={Logo} alt="" className="object-cover mobile:h-auto mobile:w-36 mobile:mt-8 lg:h-auto lg:w-40"></img>
-                                <h3 className="text-3xl mt-6 ml-1 font-bold text-black mb-4">{jobDetails.attributes.judul_magang}</h3>
+                                <h3 className="text-3xl mt-6 ml-1 font-bold text-black mb-4">{jobDetails.judul_magang}</h3>
                                 <p className="text-lg mt-3 ml-1 font-normal text-black">Perkumpulan Gerakan OK OCE</p>
                                 <p className="text-lg ml-1 font-normal text-black">Kota Jakarta Selatan (WFO)</p>
-                                <p className="text-lg ml-1 font-normal text-black mb-4"><span className="font-bold">Durasi Magang : </span>{jobDetails.attributes.durasi_magang}</p>
+                                <p className="text-lg ml-1 font-normal text-black mb-4"><span className="font-bold">Durasi Magang : </span>{jobDetails.durasi_magang}</p>
                                 <div className="w-full mt-10 mr-32 mb-10">
                                     <h1 className="text-2xl text-black font-bold">Rincian Kegiatan</h1>
                                     <h2 className="mt-3 font-bold text-black text-lg">SMART Empowerment: Integrating Sustainable Practices And Co-Learning Spaces For Uplifting UMKM</h2>
@@ -129,44 +134,29 @@ const Magang = () => {
                                 <div className="w-full mt-10 mr-32 mb-10">
                                     <h1 className="text-2xl text-black font-bold">Kompetensi yang Dikembangkan</h1>
                                     <div className="grid mobile:grid-cols-1 lg:grid-cols-2 lg:grid-flow-row lg:gap-y-6">
-                                        <div className="border-2 drop-shadow-md rounded-lg mt-4 text-black p-4 font-bold text-lg mobile:w-full lg:max-w-[75%]">{jobDetails.attributes.kompetensi_1}</div>
-                                        <div className="border-2 drop-shadow-md rounded-lg mt-4 text-black p-4 font-bold text-lg mobile:w-full lg:max-w-[75%]">{jobDetails.attributes.kompetensi_2}</div>
-                                        <div className="border-2 drop-shadow-md rounded-lg mt-4 text-black p-4 font-bold text-lg mobile:w-full lg:max-w-[75%]">{jobDetails.attributes.kompetensi_3}</div>
-                                        <div className="border-2 drop-shadow-md rounded-lg mt-4 text-black p-4 font-bold text-lg mobile:w-full lg:max-w-[75%]">{jobDetails.attributes.kompetensi_4}</div>
-                                        <div className="border-2 drop-shadow-md rounded-lg mt-4 text-black p-4 font-bold text-lg mobile:w-full lg:max-w-[75%]">{jobDetails.attributes.kompetensi_5}</div>
+                                        <div className="border-2 drop-shadow-md rounded-lg mt-4 text-black p-4 font-bold text-lg mobile:w-full lg:max-w-[75%]">{jobDetails.kompetensi[0]}</div>
+                                        <div className="border-2 drop-shadow-md rounded-lg mt-4 text-black p-4 font-bold text-lg mobile:w-full lg:max-w-[75%]">{jobDetails.kompetensi[1]}</div>
+                                        <div className="border-2 drop-shadow-md rounded-lg mt-4 text-black p-4 font-bold text-lg mobile:w-full lg:max-w-[75%]">{jobDetails.kompetensi[2]}</div>
+                                        <div className="border-2 drop-shadow-md rounded-lg mt-4 text-black p-4 font-bold text-lg mobile:w-full lg:max-w-[75%]">{jobDetails.kompetensi[3]}</div>
+                                        <div className="border-2 drop-shadow-md rounded-lg mt-4 text-black p-4 font-bold text-lg mobile:w-full lg:max-w-[75%]">{jobDetails.kompetensi[4]}</div>
                                     </div>
                                 </div>
                                 <div className="w-full mt-10 mr-32 mb-10">
                                     <h1 className="text-2xl text-black font-bold">Kriteria Peserta</h1>
                                     <div className="mt-4">
                                         <ul className="ml-5">
-                                            <li className="text-black text-black text-lg list-disc">{jobDetails.attributes.kriteria_peserta_1}</li>
-                                            <li className="text-black text-black text-lg list-disc">{jobDetails.attributes.kriteria_peserta_2}</li>
-                                            <li className="text-black text-black text-lg list-disc">{jobDetails.attributes.kriteria_peserta_3}</li>
-                                            <li className="text-black text-black text-lg list-disc">{jobDetails.attributes.kriteria_peserta_4}</li>
-                                            {jobDetails && jobDetails.attributes.kriteria_peserta_5 && (
+                                            <li className="text-black text-black text-lg list-disc">{jobDetails.kriteria_peserta[0]}</li>
+                                            <li className="text-black text-black text-lg list-disc">{jobDetails.kriteria_peserta[1]}</li>
+                                            <li className="text-black text-black text-lg list-disc">{jobDetails.kriteria_peserta[2]}</li>
+                                            <li className="text-black text-black text-lg list-disc">{jobDetails.kriteria_peserta[3]}</li>
+                                            {jobDetails && jobDetails.kriteria_peserta[4] && (
                                                 <li className="text-black text-lg list-disc">
-                                                    {jobDetails.attributes.kriteria_peserta_5}
+                                                    {jobDetails.kriteria_peserta[4]}
                                                 </li>
                                             )}
-                                            {jobDetails && jobDetails.attributes.kriteria_peserta_6 && (
+                                            {jobDetails && jobDetails.kriteria_peserta[5] && (
                                                 <li className="text-black text-lg list-disc">
-                                                    {jobDetails.attributes.kriteria_peserta_6}
-                                                </li>
-                                            )}
-                                            {jobDetails && jobDetails.attributes.kriteria_peserta_7 && (
-                                                <li className="text-black text-lg list-disc">
-                                                    {jobDetails.attributes.kriteria_peserta_7}
-                                                </li>
-                                            )}
-                                            {jobDetails && jobDetails.attributes.kriteria_peserta_8 && (
-                                                <li className="text-black text-lg list-disc">
-                                                    {jobDetails.attributes.kriteria_peserta_8}
-                                                </li>
-                                            )}
-                                            {jobDetails && jobDetails.attributes.kriteria_peserta_9 && (
-                                                <li className="text-black text-lg list-disc">
-                                                    {jobDetails.attributes.kriteria_peserta_9}
+                                                    {jobDetails.kriteria_peserta[5]}
                                                 </li>
                                             )}
                                         </ul>
@@ -177,7 +167,7 @@ const Magang = () => {
                                     <p className="text-black text-black text-lg">OK OCE menawarkan 1 macam sertifikat, yaitu sertifikat keikutsertaan program.
                                     </p>
                                 </div>
-                                <a href={jobDetails.attributes.url_msib}>
+                                <a href={jobDetails.url_msib}>
                                     <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-lg px-5 py-2.5 me-2 mb-10 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Daftar MSIB</button>
                                 </a>
                             </div>

@@ -1,0 +1,14 @@
+[
+    {
+        "id": 1,
+        "nama": "Subiakto Priosoedarsono",
+        "jabatan": "Kurator",
+        "foto": "/images/subiakto.webp"
+    },
+    {
+        "id": 2,
+        "nama": "Diana Nazir",
+        "jabatan": "Kurator",
+        "foto": "/images/diana.webp"
+    }
+]

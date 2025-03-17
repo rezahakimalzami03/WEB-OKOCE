@@ -21,104 +21,92 @@ const PengurusBaru = () => {
 
     const fetchEmployees = async () => {
         try {
-            const response = await fetch('https://cms-okoce-6629e06db84b.herokuapp.com/api/struktur-pengurus-founders?populate=*');
-            if (!response.ok) {
-                throw new Error('Gagal mengambil data karyawan');
-            }
+            const response = await fetch('/data/struktur_founder.json');
+            if (!response.ok) throw new Error('Gagal mengambil data');
+
             const data = await response.json();
-            // Extract the data array from the response
-            const employeesData = data.data;
-            console.log(employeesData)
-            setEmployees(employeesData);
+
+            if (!data || !Array.isArray(data)) throw new Error('Data tidak berbentuk array');
+
+            setEmployees(data);
         } catch (error) {
             console.error('Error fetching employees:', error);
-            // Jika terjadi kesalahan, pastikan untuk mengatur employees menjadi array kosong
-            setEmployees([]);
+            setEmployees([]); // Pastikan tetap array agar tidak undefined
         }
     };
     const fetchEmployees2 = async () => {
         try {
-            const response = await fetch('https://cms-okoce-6629e06db84b.herokuapp.com/api/struktur-pengurus-pembinas?populate=*');
-            if (!response.ok) {
-                throw new Error('Gagal mengambil data karyawan');
-            }
-            const data2 = await response.json();
-            // Extract the data array from the response
-            const employeesData2 = data2.data;
-            console.log(employeesData2)
-            setEmployees2(employeesData2);
+            const response = await fetch('/data/struktur_pembina.json');
+            if (!response.ok) throw new Error('Gagal mengambil data');
+
+            const data = await response.json();
+
+            if (!data || !Array.isArray(data)) throw new Error('Data tidak berbentuk array');
+
+            setEmployees2(data);
         } catch (error) {
             console.error('Error fetching employees:', error);
-            // Jika terjadi kesalahan, pastikan untuk mengatur employees menjadi array kosong
-            setEmployees2([]);
+            setEmployees2([]); // Pastikan tetap array agar tidak undefined
         }
     };
     const fetchEmployees3 = async () => {
         try {
-            const response = await fetch('https://cms-okoce-6629e06db84b.herokuapp.com/api/struktur-pengurus-kurasis?populate=*');
-            if (!response.ok) {
-                throw new Error('Gagal mengambil data karyawan');
-            }
+            const response = await fetch('/data/struktur_kurasi.json');
+            if (!response.ok) throw new Error('Gagal mengambil data');
+
             const data = await response.json();
-            // Extract the data array from the response
-            const employeesData = data.data;
-            console.log(employeesData)
-            setEmployees3(employeesData);
+
+            if (!data || !Array.isArray(data)) throw new Error('Data tidak berbentuk array');
+
+            setEmployees3(data);
         } catch (error) {
             console.error('Error fetching employees:', error);
-            // Jika terjadi kesalahan, pastikan untuk mengatur employees menjadi array kosong
-            setEmployees3([]);
+            setEmployees3([]); // Pastikan tetap array agar tidak undefined
         }
     };
     const fetchEmployees4 = async () => {
         try {
-            const response = await fetch('https://cms-okoce-6629e06db84b.herokuapp.com/api/struktur-pengurus-harians?populate=*');
-            if (!response.ok) {
-                throw new Error('Gagal mengambil data karyawan');
-            }
+            const response = await fetch('/data/struktur_harian.json');
+            if (!response.ok) throw new Error('Gagal mengambil data');
+
             const data = await response.json();
-            // Extract the data array from the response
-            const employeesData = data.data;
-            console.log(employeesData)
-            setEmployees4(employeesData);
+
+            if (!data || !Array.isArray(data)) throw new Error('Data tidak berbentuk array');
+
+            setEmployees4(data);
         } catch (error) {
             console.error('Error fetching employees:', error);
-            // Jika terjadi kesalahan, pastikan untuk mengatur employees menjadi array kosong
-            setEmployees4([]);
+            setEmployees4([]); // Pastikan tetap array agar tidak undefined
         }
     };
     const fetchEmployees5 = async () => {
         try {
-            const response = await fetch('https://cms-okoce-6629e06db84b.herokuapp.com/api/struktur-pengurus-direktorats?populate=*');
-            if (!response.ok) {
-                throw new Error('Gagal mengambil data karyawan');
-            }
+            const response = await fetch('/data/struktur_direktorat.json');
+            if (!response.ok) throw new Error('Gagal mengambil data');
+
             const data = await response.json();
-            // Extract the data array from the response
-            const employeesData = data.data;
-            console.log(employeesData)
-            setEmployees5(employeesData);
+
+            if (!data || !Array.isArray(data)) throw new Error('Data tidak berbentuk array');
+
+            setEmployees5(data);
         } catch (error) {
             console.error('Error fetching employees:', error);
-            // Jika terjadi kesalahan, pastikan untuk mengatur employees menjadi array kosong
-            setEmployees5([]);
+            setEmployees5([]); // Pastikan tetap array agar tidak undefined
         }
     };
     const fetchEmployees6 = async () => {
         try {
-            const response = await fetch('https://cms-okoce-6629e06db84b.herokuapp.com/api/struktur-pengurus-eksekutifs?populate=*');
-            if (!response.ok) {
-                throw new Error('Gagal mengambil data karyawan');
-            }
+            const response = await fetch('/data/struktur_eksekutif.json');
+            if (!response.ok) throw new Error('Gagal mengambil data');
+
             const data = await response.json();
-            // Extract the data array from the response
-            const employeesData = data.data;
-            console.log(employeesData)
-            setEmployees6(employeesData);
+
+            if (!data || !Array.isArray(data)) throw new Error('Data tidak berbentuk array');
+
+            setEmployees6(data);
         } catch (error) {
             console.error('Error fetching employees:', error);
-            // Jika terjadi kesalahan, pastikan untuk mengatur employees menjadi array kosong
-            setEmployees6([]);
+            setEmployees6([]); // Pastikan tetap array agar tidak undefined
         }
     };
 
@@ -133,12 +121,12 @@ const PengurusBaru = () => {
                         <h1 className="mb-8 text-2xl font-bold border-b mobile:text-3xl mobile:text-center lg:text-start">Founder OK OCE INDONESIA</h1>
                     </div>
                     <div className="flex mx-auto mobile:w-60 mobile:flex-col mobile:gap-6 lg:flex-row lg:justify-evenly lg:w-full">
-                        {employees.map((employee) => (
+                        {employees && employees.length > 0 && employees.map((employee) => (
                             <div key={employee.id} className="flex flex-col grow items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl">
-                                <img className="object-cover w-full rounded-t-lg mobile:h-60 md:h-auto md:w-48 md:rounded-none md:rounded-s-lg" src={employee.attributes?.foto_founder?.data[0]?.attributes?.url} alt={employee.attributes.nama_founder} />
+                                <img className="object-cover w-full rounded-t-lg mobile:h-60 md:h-auto md:w-48 md:rounded-none md:rounded-s-lg" src={employee.foto} alt={employee.nama} />
                                 <div className="flex flex-col justify-between p-4 leading-normal">
-                                    <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-">{employee.attributes.nama_founder}</h5>
-                                    <p className="mb-3 font-normal text-gray-600 mobile:mx-auto lg:m-0">{employee.attributes.jabatan_founder}</p>
+                                    <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-">{employee.nama}</h5>
+                                    <p className="mb-3 font-normal text-gray-600 mobile:mx-auto lg:m-0">{employee.jabatan}</p>
                                 </div>
                             </div>
                         )
@@ -150,12 +138,12 @@ const PengurusBaru = () => {
                         <h1 className="mb-8 text-2xl font-bold border-b mobile:text-3xl mobile:text-center lg:text-start">Dewan Pembina</h1>
                     </div>
                     <div className="flex mx-auto mobile:w-60 mobile:flex-col mobile:gap-6 lg:flex-row lg:justify-evenly lg:w-full">
-                        {employees2.map((employee) => (
+                        {employees2 && employees2.length > 0 && employees2.map((employee) => (
                             <div key={employee.id} className="flex flex-col grow items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl">
-                                <img className="object-cover w-full rounded-t-lg mobile:h-60 md:h-auto md:w-48 md:rounded-none md:rounded-s-lg" src={employee.attributes?.foto_pembina?.data[0]?.attributes?.url} alt={employee.attributes.nama_pembina} />
+                                <img className="object-cover w-full rounded-t-lg mobile:h-60 md:h-auto md:w-48 md:rounded-none md:rounded-s-lg" src={employee.foto} alt={employee.nama} />
                                 <div className="flex flex-col justify-between p-4 leading-normal">
-                                    <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 mobile:mx-auto lg:m-0">{employee.attributes.nama_pembina}</h5>
-                                    <p className="mb-3 font-normal text-gray-600 mobile:mx-auto lg:m-0">{employee.attributes.jabatan_pembina}</p>
+                                    <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 mobile:mx-auto lg:m-0">{employee.nama}</h5>
+                                    <p className="mb-3 font-normal text-gray-600 mobile:mx-auto lg:m-0">{employee.jabatan}</p>
                                 </div>
                             </div>
                         )
@@ -167,12 +155,12 @@ const PengurusBaru = () => {
                         <h1 className="mb-8 text-2xl font-bold border-b mobile:text-3xl mobile:text-center lg:text-start">Dewan Kurasi</h1>
                     </div>
                     <div className="flex mx-auto mobile:w-60 mobile:flex-col mobile:gap-6 lg:flex-row lg:justify-evenly lg:w-full">
-                        {employees3.map((employee) => (
+                        {employees3 && employees3.length > 0 && employees3.map((employee) => (
                             <div key={employee.id} className="flex items-center bg-white border border-gray-200 rounded-lg shadow mobile:flex-col md:flex-row md:max-w-xl lg:flex-row lg:grow">
-                                <img className="object-cover w-full rounded-t-lg mobile:h-60 md:h-auto md:w-48 md:rounded-none md:rounded-s-lg" src={employee.attributes?.foto_dewan?.data[0]?.attributes?.url} alt={employee.attributes.nama_dewan} />
+                                <img className="object-cover w-full rounded-t-lg mobile:h-60 md:h-auto md:w-48 md:rounded-none md:rounded-s-lg" src={employee.foto} alt={employee.nama} />
                                 <div className="flex flex-col justify-between p-4 leading-normal">
-                                    <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 mobile:mx-auto mobile:text-center lg:text-start lg:m-0">{employee.attributes.nama_dewan}</h5>
-                                    <p className="mb-3 font-normal text-gray-600 mobile:mx-auto lg:m-0">{employee.attributes.jabatan_dewan}</p>
+                                    <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 mobile:mx-auto mobile:text-center lg:text-start lg:m-0">{employee.nama}</h5>
+                                    <p className="mb-3 font-normal text-gray-600 mobile:mx-auto lg:m-0">{employee.jabatan}</p>
                                 </div>
                             </div>
                         ))}
@@ -183,14 +171,14 @@ const PengurusBaru = () => {
                         <h1 className="mb-8 text-2xl font-bold border-b mobile:text-3xl mobile:text-center lg:text-start">Pengurus Harian</h1>
                     </div>
                     <div className="flex mx-auto mobile:w-60 mobile:flex-col mobile:gap-6 lg:flex-row lg:justify-evenly lg:w-full lg:gap-1">
-                        {employees4.map((employee) => (
+                        {employees4 && employees4.length > 0 && employees4.map((employee) => (
                             <div key={employee.id} className="grid items-center bg-white border border-gray-200 rounded-lg shadow mobile:grid-cols-1 md:flex-row md:min-h-16 md:max-w-[24rem] lg:grid-cols-3">
                                 <div className="mobile:w-auto lg:w-40 lg:h-full">
-                                    <img className="object-cover w-full rounded-t-lg mobile:h-60 md:h-auto md:w-48 md:rounded-none md:rounded-s-lg" src={employee.attributes?.foto_pengurus?.data[0]?.attributes?.url} alt={employee.attributes.nama_pengurus} />
+                                    <img className="object-cover w-full rounded-t-lg mobile:h-60 md:h-auto md:w-48 md:rounded-none md:rounded-s-lg" src={employee.foto} alt={employee.nama} />
                                 </div>
                                 <div className="flex flex-col justify-between p-4 leading-normal mobile:ml-0 lg:ml-14">
-                                    <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 text-start mobile:mx-auto lg:text-start lg:m-0">{employee.attributes.nama_pengurus}</h5>
-                                    <p className="mb-3 font-normal text-gray-600 text-start mobile:mx-auto mobile: lg:text-start lg:m-0">{employee.attributes.jabatan_pengurus}</p>
+                                    <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 text-start mobile:mx-auto lg:text-start lg:m-0">{employee.nama}</h5>
+                                    <p className="mb-3 font-normal text-gray-600 text-start mobile:mx-auto mobile: lg:text-start lg:m-0">{employee.jabatan}</p>
                                 </div>
                             </div>
                         ))}
@@ -201,12 +189,12 @@ const PengurusBaru = () => {
                         <h1 className="mb-8 text-2xl font-bold border-b mobile:text-3xl mobile:text-center lg:text-start">Direktorat</h1>
                     </div>
                     <div className="grid mx-auto mobile:w-60 mobile:grid-cols-1 mobile:grid-flow-row mobile:gap-6 lg:w-full lg:grid-cols-2 lg:grid-flow-row lg:pl-4 lg:gap-6">
-                        {employees5.map((employee) => (
+                        {employees5 && employees5.length > 0 && employees5.map((employee) => (
                             <div key={employee.id} className="flex flex-col grow items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl">
-                                <img className="object-cover w-full rounded-t-lg mobile:h-60 md:h-auto md:w-48 md:rounded-none md:rounded-s-lg" src={employee.attributes?.foto_pengurus?.data[0]?.attributes?.url} alt={employee.attributes.nama_pengurus} />
+                                <img className="object-cover w-full rounded-t-lg mobile:h-60 md:h-auto md:w-48 md:rounded-none md:rounded-s-lg" src={employee.foto} alt={employee.nama} />
                                 <div className="flex flex-col justify-between p-4 leading-normal">
-                                    <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 mobile:mx-auto mobile:text-center lg:text-start lg:m-0">{employee.attributes.nama_pengurus}</h5>
-                                    <p className="mb-3 font-normal text-gray-600 mobile:mx-auto mobile:text-center lg:text-start lg:m-0">{employee.attributes.jabatan_pengurus}</p>
+                                    <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 mobile:mx-auto mobile:text-center lg:text-start lg:m-0">{employee.nama}</h5>
+                                    <p className="mb-3 font-normal text-gray-600 mobile:mx-auto mobile:text-center lg:text-start lg:m-0">{employee.jabatan}</p>
                                 </div>
                             </div>
                         ))}
@@ -217,12 +205,12 @@ const PengurusBaru = () => {
                         <h1 className="mb-8 text-2xl font-bold border-b mobile:text-3xl mobile:text-center lg:text-start">Eksekutif</h1>
                     </div>
                     <div className="grid mx-auto mobile:w-60 mobile:grid-cols-1 mobile:grid-flow-row mobile:gap-6 lg:w-full lg:grid-cols-2 lg:grid-flow-row lg:pl-4 lg:gap-6">
-                        {employees6.map((employee) => (
+                        {employees6 && employees6.length > 0 && employees6.map((employee) => (
                             <div key={employee.id} className="flex flex-col grow items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl">
-                                <img className="object-cover w-full rounded-t-lg mobile:h-60 md:h-auto md:w-48 md:rounded-none md:rounded-s-lg" src={employee.attributes?.foto_pengurus?.data[0]?.attributes?.url} alt={employee.attributes.nama_pengurus} />
+                                <img className="object-cover w-full rounded-t-lg mobile:h-60 md:h-auto md:w-48 md:rounded-none md:rounded-s-lg" src={employee.foto} alt={employee.nama} />
                                 <div className="flex flex-col justify-between p-4 leading-normal">
-                                    <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 mobile:mx-auto mobile:text-center lg:text-start lg:m-0">{employee.attributes.nama_pengurus}</h5>
-                                    <p className="mb-3 font-normal text-gray-600 mobile:mx-auto mobile:text-center lg:text-start lg:m-0">{employee.attributes.jabatan_pengurus}</p>
+                                    <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 mobile:mx-auto mobile:text-center lg:text-start lg:m-0">{employee.nama}</h5>
+                                    <p className="mb-3 font-normal text-gray-600 mobile:mx-auto mobile:text-center lg:text-start lg:m-0">{employee.jabatan}</p>
                                 </div>
                             </div>
                         ))}

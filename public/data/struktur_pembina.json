@@ -1,0 +1,14 @@
+[
+    {
+        "id": 1,
+        "nama": "Indra Uno",
+        "jabatan": "Founder & Ketua Dewan Pembina",
+        "foto": "/images/indrauno.webp"
+    },
+    {
+        "id": 2,
+        "nama": "Victor Aritonang",
+        "jabatan": "Pembina",
+        "foto": "/images/victor.webp"
+    }
+]

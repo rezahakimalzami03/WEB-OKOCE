@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import { useState, useEffect } from "react";
 import Header from "../asset/img/Merch.png";
 import FloatingMenu from "../components/FloatingMenu";
@@ -9,39 +10,21 @@ const Merchandise = () => {
     const [isLoading, setIsLoading] = useState(false); // State untuk modal loading
 
     const fetchData = async () => {
-        setIsLoading(true); // Set loading ke true sebelum fetch data
+        setIsLoading(true);
         try {
-            const response = await fetch(
-                `https://cms-okoce-6629e06db84b.herokuapp.com/api/merchandises?populate=*&_sort=id:ASC&_cacheBuster=${Date.now()}`
-            );
+            const response = await fetch('/data/merchandise.json'); // Ambil dari file lokal
             if (!response.ok) {
                 throw new Error('Gagal mengambil data merchandise');
             }
-            const data = await response.json();
-            const merch = data.data;
 
-            const merchandiseData = merch.map(item => {
-                const images = item.attributes.foto_merchandise.data.map(image => ({
-                    primary: image.attributes.url,
-                }));
-
-                return {
-                    id: item.id,
-                    images,
-                    judul: item.attributes.judul_merchandise,
-                    harga: item.attributes.harga_merchandise,
-                    stok: item.attributes.stock_merchandise,
-                    deskripsi: item.attributes.deskripsi_merchandise,
-                };
-            });
-
-            setDatas(merchandiseData);
-            setCurrentImageIndexes(new Array(merchandiseData.length).fill(0)); // Initialize image indexes
+            const merchData = await response.json(); // Pastikan ini array valid
+            setDatas(merchData);
+            setCurrentImageIndexes(new Array(merchData.length).fill(0));
         } catch (error) {
             console.error('Error fetching data:', error);
             setDatas([]);
         } finally {
-            setIsLoading(false); // Set loading ke false setelah fetch selesai
+            setIsLoading(false);
         }
     };
 
@@ -119,32 +102,34 @@ const Merchandise = () => {
                                 </div>
 
                                 <div className="w-full lg:w-2/3 pl-0 lg:py-10 lg:px-10 font-poppins flex flex-col justify-between">
-                                    <div className="mobile:flex-row lg:flex lg:flex-wrap">
-                                        <a className="flex-auto text-xl font-semibold text-black">
+                                    <div className="flex justify-between items-center w-full">
+                                        <a className="text-xl font-semibold text-black">
                                             {item.judul}
                                         </a>
-                                        <div className="text-xl font-semibold mobile:text-black mobile:mt-2 lg:text-gray-500">
+                                        <div className="text-xl font-semibold text-gray-500">
                                             {item.harga}
                                         </div>
-                                        <div className="flex-none w-full mt-2 text-sm font-medium text-gray-500">
-                                            Sisa stok: {item.stok}
-                                        </div>
-                                        <div className="mt-8">
-                                            <p className="text-justify mobile:text-black">
-                                                {item.deskripsi}
-                                            </p>
-                                        </div>
                                     </div>
-                                    <div className="flex text-sm font-medium mobile:mt-4 mobile:mb-2 lg:mb-7 lg:m-0">
+                                    <div className="flex-none w-full mobile:mt-2 lg:mt-0 text-sm font-medium text-gray-500">
+                                        Sisa stok: {item.stock}
+                                    </div>
+                                    <div className="mobile:mt-8 lg:mt-0">
+                                        <p className="text-justify text-black">
+                                            {item.deskripsi}
+                                        </p>
+                                    </div>
+
+                                    <div className="flex text-sm font-medium mt-4 mb-2 lg:mb-7">
                                         <a
                                             href={`https://wa.me/6282210109142?text=Hallo%20Saya%20tertarik%20dengan%20Merchandise%20${item.judul}`}
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            className="py-2 px-4 bg-indigo-600 hover:bg-indigo-700 focus:ring-indigo-500 focus:ring-offset-indigo-200 text-white transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg mobile:w-full lg:w-40"
+                                            className="py-2 px-4 bg-indigo-600 hover:bg-indigo-700 focus:ring-indigo-500 focus:ring-offset-indigo-200 text-white transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg w-full lg:w-40"
                                         >
                                             Beli sekarang
                                         </a>
                                     </div>
+
                                 </div>
                             </div>
                         ))

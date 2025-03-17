@@ -18,22 +18,17 @@ const Donasi = () => {
     const fetchData = async () => {
         setIsLoading(true);
         try {
-            const response = await fetch(
-                "https://cms-okoce-6629e06db84b.herokuapp.com/api/donasis?populate=*"
-            );
+            const response = await fetch('/data/donasi.json'); // Mengambil data lokal
             if (!response.ok) {
                 throw new Error("Gagal mengambil data donasi");
             }
             const data = await response.json();
-            const donasiData = data.data;
-            console.log(donasiData);
-            setData(donasiData);
+            setData(data); // Menyimpan data ke state
         } catch (error) {
             console.error("Error fetching donasi:", error);
-            // Jika terjadi kesalahan, pastikan untuk mengatur data donasi menjadi array kosong
             setData([]);
         } finally {
-            setIsLoading(false); // Set loading ke false setelah fetch selesai
+            setIsLoading(false);
         }
     };
 
@@ -57,18 +52,18 @@ const Donasi = () => {
                                     <div className="flex flex-col w-[40%] max-md:ml-0 max-md:w-full">
                                         <img
                                             loading="lazy"
-                                            src={data.attributes?.foto_donasi?.data[0]?.attributes?.url}
-                                            alt={data.attributes?.judul_berita || "Gambar Berita"}
+                                            src={data.foto_donasi}
+                                            alt={data.judul_donasi || "Gambar Berita"}
                                             className="grow w-full h-auto shadow-sm max-md:max-w-full"
                                         />
                                     </div>
                                     <div className="flex flex-col ml-5 w-[60%] max-md:ml-0 max-md:w-full">
                                         <div className="flex flex-col grow px-12 py-10 w-full text-black bg-gray-50 rounded-none shadow-sm max-md:px-5 max-md:max-w-full">
                                             <div className="text-2xl text-center font-semibold leading-[50px] max-md:max-w-full max-md:text-4xl">
-                                                {data.attributes.judul_donasi}
+                                                {data.judul_donasi}
                                             </div>
                                             <div className="mt-2 text-82 leading-8 text-justify max-md:max-w-full">
-                                                {data.attributes.deskripsi_donasi}
+                                                {data.deskripsi_donasi}
                                             </div>
                                         </div>
                                     </div>

@@ -1,0 +1,65 @@
+[
+    {
+        "id": 1,
+        "judul": "Kaos OK OCE",
+        "deskripsi": "Kaos OK OCE, dengan logo OK OCE Besar di bagian dada, dan logo OKOCE.NET di bagian punggung belakang. Dibuat menggunakan bahan kaos cotton combed soft 30s. Tersedia dalam bentuk lengan pendek warna (Hitam, Merah, Biru)",
+        "harga": "Rp. 105.000,-",
+        "stock": 16,
+        "link": "https://wa.me/6282210109142?text=Hallo%20Saya%20tertarik%20dengan%20Merchandise%20OK-02",
+        "images": [
+            {
+                "primary": "/images/OK-01/kaos-ok-oce-logo-besar-hitam-scaled.webp"
+            },
+            {
+                "primary": "/images/OK-01/kaos-ok-oce-logo-besar-biru-scaled.webp"
+            },
+            {
+                "primary": "/images/OK-01/kaos-ok-oce-logo-besar-merah-scaled.webp"
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "judul": "Kaos OK OCE (Logo Kecil)",
+        "deskripsi": "Kaos OK OCE, dengan logo OK OCE Besar di bagian dada, dan logo OKOCE.NET di bagian punggung belakang. Dibuat menggunakan bahan kaos cotton combed soft 30s. Tersedia dalam bentuk lengan pendek warna (Hitam, Merah, Biru)",
+        "harga": "Rp. 105.000,-",
+        "stock": 16,
+        "link": "https://wa.me/6282210109142?text=Hallo%20Saya%20tertarik%20dengan%20Merchandise%20OK-02",
+        "images": [
+            {
+                "primary": "/images/OK-03/Kaos-04-scaled.webp"
+            },
+            {
+                "primary": "/images/OK-03/Kaos-02-scaled.webp"
+            },
+            {
+                "primary": "/images/OK-03/Kaos-03-1-scaled.webp"
+            }
+        ]
+    },
+    {
+        "id": 3,
+        "judul": "Kaos OK OCE Gerakan Sosial",
+        "deskripsi": "Kaos Gerakan Sosial OK OCE, terdiri dari empat titik lokasi cetak logo Gerakan Sosial di bagian depan, logo OK OCE di bagian belakang , logo 7 top samping kanan dan logo okoce.net sebelah kiri Dibuat menggunakan bahan kaos cotton combed soft 30s. Tersedia dalam bentuk lengan pendek dan lengan panjang CATATAN : Lengan Pendek: Rp. 115.000 Lengan Panjang: Rp.125.000",
+        "harga": "Rp. 115.000 - Rp. 125.000",
+        "stock": 16,
+        "link": "https://wa.me/6282210109142?text=Hallo%20Saya%20tertarik%20dengan%20Merchandise%20OK-02",
+        "images": [
+            {
+                "primary": "/images/OK-02/Kaos-01-scaled.webp"
+            },
+            {
+                "primary": "/images/OK-02/IMG-20220225-WA0013.png"
+            },
+            {
+                "primary": "/images/OK-02/IMG-20220225-WA0011.png"
+            },
+            {
+                "primary": "/images/OK-02/IMG-20220225-WA0007.png"
+            },
+            {
+                "primary": "/images/OK-02/IMG-20220225-WA0010.png"
+            }
+        ]
+    }
+]

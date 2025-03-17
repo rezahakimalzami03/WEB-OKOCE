@@ -1,0 +1,26 @@
+[
+    {
+        "id": 1,
+        "judul_usaha": "Franchise Minuman Boba",
+        "lokasi_usaha": "Jakarta",
+        "sistem_kerja": "Franchise",
+        "kategori_usaha": "Minuman",
+        "tentang_program": "Bisnis minuman boba dengan modal terjangkau.",
+        "jobdesc_usaha": "Menyediakan bahan baku, pelatihan, dan strategi pemasaran.",
+        "kriteria_usaha": "Cocok untuk pemula yang ingin memulai bisnis.",
+        "benefit_program": "Dukungan operasional, branding, dan supplier terpercaya.",
+        "foto_usaha": "/images/franchise-boba-terbaik.webp"
+    },
+    {
+        "id": 2,
+        "judul_usaha": "Usaha Laundry Kiloan",
+        "lokasi_usaha": "Bandung",
+        "sistem_kerja": "Kemitraan",
+        "kategori_usaha": "Jasa",
+        "tentang_program": "Bisnis laundry kiloan dengan layanan antar-jemput.",
+        "jobdesc_usaha": "Pencucian, penyetrikaan, dan pengemasan pakaian pelanggan.",
+        "kriteria_usaha": "Membutuhkan tempat usaha minimal 3x3 meter.",
+        "benefit_program": "Modal ringan, profit stabil, dan pelanggan tetap.",
+        "foto_usaha": "/images/panduan-bisnis-laundry-kiloan.jpg"
+    }
+]

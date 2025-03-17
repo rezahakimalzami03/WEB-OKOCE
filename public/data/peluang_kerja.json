@@ -1,0 +1,54 @@
+[
+    {
+        "id": 1,
+        "judul_kerja": "Data Analyst",
+        "lokasi_kerja": "Jakarta Selatan, Indonesia",
+        "sistem_kerja": "Hybrid",
+        "kategori_kerja": "Data Science",
+        "tentang_kerja": "Menganalisis data untuk membantu pengambilan keputusan bisnis.",
+        "deskripsi_kerja": "Mengolah, membersihkan, dan menganalisis data untuk mendapatkan insight bisnis yang berharga.",
+        "kriteria_kerja": "Minimal S1 di bidang terkait, pengalaman 1-2 tahun, menguasai SQL dan Python.",
+        "benefit_kerja": "Gaji kompetitif, tunjangan kesehatan, kesempatan pengembangan karir.",
+        "foto_kerja": "/images/data_analyst.jpg",
+        "periode_kerja": "18 Agustus 2025"
+    },
+    {
+        "id": 2,
+        "judul_kerja": "Programmer",
+        "lokasi_kerja": "Jakarta Selatan, Indonesia",
+        "sistem_kerja": "Contract - Onsite",
+        "kategori_kerja": "Software Development",
+        "tentang_kerja": "Membantu pengembangan aplikasi web dan mobile.",
+        "deskripsi_kerja": "Membuat dan mengelola kode untuk aplikasi web dan mobile menggunakan React dan Node.js.",
+        "kriteria_kerja": "Pengalaman dengan JavaScript, React, dan Node.js. Familiar dengan Git dan CI/CD.",
+        "benefit_kerja": "Jam kerja fleksibel, kerja remote, bonus performa.",
+        "foto_kerja": "/images/programmer.jpg",
+        "periode_kerja": "18 Agustus 2025"
+    },
+    {
+        "id": 3,
+        "judul_kerja": "Business Analyst",
+        "lokasi_kerja": "Jakarta Selatan, Indonesia",
+        "sistem_kerja": "On-site",
+        "kategori_kerja": "Business Development",
+        "tentang_kerja": "Menganalisis proses bisnis dan memberikan rekomendasi perbaikan.",
+        "deskripsi_kerja": "Mengumpulkan dan menganalisis kebutuhan bisnis, serta menyusun laporan untuk mendukung pengambilan keputusan.",
+        "kriteria_kerja": "Minimal S1 Manajemen/IT, pengalaman 2 tahun, kemampuan komunikasi dan analisis yang baik.",
+        "benefit_kerja": "Tunjangan transportasi, gaji tetap, bonus kinerja.",
+        "foto_kerja": "/images/business_analyst.jpg",
+        "periode_kerja": "18 Agustus 2025"
+    },
+    {
+        "id": 4,
+        "judul_kerja": "Personal Assistant",
+        "lokasi_kerja": "Jakarta Selatan, Indonesia",
+        "sistem_kerja": "On-site",
+        "kategori_kerja": "Administration",
+        "tentang_kerja": "Membantu kerja administratif dan operasional eksekutif perusahaan.",
+        "deskripsi_kerja": "Menjadwalkan pertemuan, mengelola email, dan menangani tugas administratif lainnya.",
+        "kriteria_kerja": "Pengalaman minimal 1 tahun, kemampuan multitasking, mahir menggunakan Microsoft Office.",
+        "benefit_kerja": "Asuransi kesehatan, peluang networking, bonus tahunan.",
+        "foto_kerja": "/images/personal_assistant.jpg",
+        "periode_kerja": "18 Agustus 2025"
+    }
+]

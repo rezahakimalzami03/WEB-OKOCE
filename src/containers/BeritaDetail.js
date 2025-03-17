@@ -15,21 +15,28 @@ const BeritaDetail = () => {
         setIsLoading(true);
         const fetchData = async () => {
             try {
-                const response = await fetch(`https://cms-okoce-6629e06db84b.herokuapp.com/api/beritas/${id}?populate=*`);
+                const response = await fetch('/data/berita.json'); // Mengambil data berita dari file lokal
                 if (!response.ok) {
-                    throw new Error('Gagal mengambil data berita');
+                    throw new Error("Gagal mengambil data berita");
                 }
                 const data = await response.json();
-                setNewsData(data.data);
+
+                // Cari berita berdasarkan ID yang dipilih dari useParams
+                const selectedNews = data.find((item) => item.id === parseInt(id));
+
+                if (!selectedNews) {
+                    throw new Error("Berita tidak ditemukan");
+                }
+
+                setNewsData(selectedNews); // Menyimpan data berita yang ditemukan
             } catch (error) {
-                console.error('Error fetching news:', error);
+                console.error("Error fetching berita:", error);
+                setNewsData(null);
             } finally {
                 setIsLoading(false); // Set loading ke false setelah fetch selesai
             }
         };
-
         fetchData();
-        setIsLoading(false);
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }, [id]);
 
@@ -44,42 +51,30 @@ const BeritaDetail = () => {
                 <div className="max-w-4xl mx-auto mt-24 p-4">
                     <div className="bg-white shadow-md rounded-lg p-10">
                         <div className="w-[90%] mx-auto">
-                            <h1 className="font-bold text-3xl">{newsData.attributes.judul_berita}</h1>
+                            <h1 className="font-bold text-3xl">{newsData.judul_berita}</h1>
                             <div className="flex mt-5">
-                                <div className="flex justify-items-center">
-                                    <div className="mt-1">
-                                        <img src={iconCal} alt=""></img>
-                                    </div>
-                                    <div className="ml-2">
-                                        <h3>{newsData.attributes.tanggal_berita}</h3>
-                                    </div>
+                                <div className="flex items-center">
+                                    <img src={iconCal} alt="Calendar Icon" className="w-5 h-5" />
+                                    <h3 className="ml-2">{newsData.tanggal_berita}</h3>
                                 </div>
-                                <div className="flex justify-items-center ml-5">
-                                    <div className="mt-1">
-                                        <img src={iconAuth} alt=""></img>
-                                    </div>
-                                    <div className="ml-2">
-                                        <h3 className="text-black">{newsData.attributes.autor_berita}</h3>
-                                    </div>
+                                <div className="flex items-center ml-5">
+                                    <img src={iconAuth} alt="Author Icon" className="w-5 h-5" />
+                                    <h3 className="ml-2 text-black">{newsData.autor_berita}</h3>
                                 </div>
                             </div>
-                            <img className="mt-10 object-cover w-full h-full" src={newsData.attributes?.foto_content?.data[0]?.attributes?.url}
-                                alt={newsData.attributes?.judul_berita || "Gambar Berita"} />
+                            <img
+                                className="mt-10 object-cover w-full h-full"
+                                src={newsData.foto_berita.startsWith('/')
+                                    ? newsData.foto_berita
+                                    : `/assets/${newsData.foto_berita}`}
+                                alt={newsData.judul_berita}
+                            />
                             <div className="w-full mt-14 mx-auto border-blue-400">
-                                <p className="text-lg text-black text-justify pb-4">{newsData.attributes?.deskripsi_berita}
-                                </p>
-                                <p className="mt-2 text-lg text-black text-justify pb-4">{newsData.attributes?.deskripsi_berita_2}
-                                </p>
-                                <p className="mt-2 text-lg text-black text-justify pb-4">{newsData.attributes?.deskripsi_berita_3}
-                                </p>
-                                <p className="mt-2 text-lg text-black text-justify pb-4">{newsData.attributes?.deskripsi_berita_4}
-                                </p>
-                                <p className="mt-2 text-lg text-black text-justify pb-4">{newsData.attributes?.deskripsi_berita_5}
-                                </p>
+                                <p className="text-lg text-black text-justify pb-4">{newsData.deskripsi_berita}</p>
                             </div>
                         </div>
                     </div>
-                </div >
+                </div>
             </div>
             <FloatingMenu />{" "}
         </>

@@ -1,0 +1,74 @@
+[
+    {
+        "id": 1,
+        "nama": "PERWIRA - Perkumpulan Wirausaha",
+        "alamat": "Jl. Masjid Darul Falah Gg. H. Jimin No. 57 RT. 09/02 Petukangan Utara Pesanggrahan",
+        "foto": "/images/penggerak/perwira.png"
+    },
+    {
+        "id": 2,
+        "nama": "GAN - Gebrakan Anak Negeri",
+        "alamat": "Jl. Putra Raya Blok G 2 No. 12, Pondok Duta I, Cimanggis, Depok",
+        "foto": "/images/penggerak/gan.png"
+    },
+    {
+        "id": 3,
+        "nama": "OK OCE BUANA M16",
+        "alamat": "Jalan Melawai Raya no:16, Kelurahan Melawai, Kecamatan, Kebayoran Baru. Jakarta Selatan, (Indonesia)",
+        "foto": "/images/penggerak/buana.jpeg"
+    },
+    {
+        "id": 4,
+        "nama": "OK OCE STII - Serikat Tani Islam Indonesia",
+        "alamat": "Gedung Menara Dakwah lantai 3 Jl Kramat Raya No 45 Jakarta Pusat",
+        "foto": "/images/penggerak/stii.png"
+    },
+    {
+        "id": 5,
+        "nama": "HR ACADEMY - Human Capital Solution",
+        "alamat": "Jln. Radin Inten II Kav. DKI D9, Duren Sawit, Kota Jakarta Timur, DKI Jakarta 13440",
+        "foto": "/images/penggerak/hr.png"
+    },
+    {
+        "id": 6,
+        "nama": "OK OCE Wonderful Yogyakarta",
+        "alamat": "Yogyakarta",
+        "foto": "/images/penggerak/yogyakarta.jpeg"
+    },
+    {
+        "id": 7,
+        "nama": "SKIES - Skillful Entrepreneurs",
+        "alamat": "Jln. Pancawarga 5 Cipinang Besar Selatan - Jatinegara Jakarta Timur 13410",
+        "foto": "/images/penggerak/skies.png"
+    },
+    {
+        "id": 8,
+        "nama": "ESPAS - Emak emak Smart Pejuang Andalan Sejati",
+        "alamat": "Jln. Pesona Kyoto 1 Block D5 / No. 24, Kota Wisata, Kelurahan Ciangsana, Kecamatan Gunung Putri, Kab. Bogor, Jawa Barat, 16968",
+        "foto": "/images/penggerak/espas.jpeg"
+    },
+    {
+        "id": 9,
+        "nama": "OK OCE XPRESS",
+        "alamat": "Infinia Park Blok B 89 No. 45, Jl. Dr. Saharjo, RT.1/RW.7, Manggarai, Kec. Tebet, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12850",
+        "foto": "/images/penggerak/express.png"
+    },
+    {
+        "id": 10,
+        "nama": "Wanita Cerdas dan Tangguh",
+        "alamat": "Apartemen Oak Tower A 18/23 Jl Perintis Kemerdekaan Pulogadung Jakarta Timur",
+        "foto": "/images/penggerak/wanita.png"
+    },
+    {
+        "id": 11,
+        "nama": "Seeker Revolution",
+        "alamat": "Kantor Pusat : Rt 07/Rw 02 Desa Salem, Kec. Salem, Kab. Brebes. Kantor Operasional : Grand Mekarsari Residence L4/7 Cileungsi, Bogor 16820",
+        "foto": "/images/penggerak/seeker.jpg"
+    },
+    {
+        "id": 12,
+        "nama": "OK OCE INA MAKMUR",
+        "alamat": "Villa Bukit Mas Blok E No 1 Surabaya Telp 0815 5673 1853",
+        "foto": "/images/penggerak/ina.jpeg"
+    }
+]

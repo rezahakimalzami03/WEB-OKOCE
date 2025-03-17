@@ -17,15 +17,17 @@ const Penggerak = () => {
     const fetchPenggerak = async () => {
         setIsLoading(true);
         try {
-            const response = await fetch('https://cms-okoce-6629e06db84b.herokuapp.com/api/penggerak-okoces?populate=*');
-            if (!response.ok) {
-                throw new Error('Gagal mengambil data penggerak');
-            }
+            const response = await fetch('/data/penggerak.json');
+            if (!response.ok) throw new Error('Gagal mengambil data');
+
             const data = await response.json();
-            setPenggerak(data.data);
+
+            if (!data || !Array.isArray(data)) throw new Error('Data tidak berbentuk array');
+
+            setPenggerak(data);
         } catch (error) {
-            console.error('Error fetching penggerak:', error);
-            setPenggerak([]);
+            console.error('Error fetching employees:', error);
+            setPenggerak([]); // Pastikan tetap array agar tidak undefined
         } finally {
             setIsLoading(false); // Set loading ke false setelah fetch selesai
         }
@@ -59,7 +61,7 @@ const Penggerak = () => {
             <div className="mt-[3rem] mb-[3rem] flex items-center justify-center">
                 <div className="container w-4/5 mx-auto p-4">
                     <div className="grid mobile:grid-cols-1 mobile:gap-6 sm:grid-cols-2 md:grid-cols-3 lg:gap-8 lg:grid-cols-3">
-                        {penggerak.map((item) => (
+                        {penggerak && penggerak.length > 0 && penggerak.map((item) => (
                             <PenggerakCard key={item.id} item={item} />
                         ))}
                     </div>
@@ -82,14 +84,14 @@ const PenggerakCard = ({ item }) => {
                 )}
                 <img
                     className="min-h-60 max-h-60 min-w-40 mx-auto"
-                    src={item.attributes?.foto_penggerak?.data[0]?.attributes?.url}
-                    alt={item.attributes.nama_penggerak}
+                    src={item.foto}
+                    alt={item.nama}
                     onLoad={() => setIsLoaded(true)}
                 />
             </div>
             <div className="px-1 py-4">
-                <div className="font-bold text-xl mb-2">{item.attributes.nama_penggerak}</div>
-                <p className="text-gray-700 text-base">{item.attributes.deskripsi_penggerak}</p>
+                <div className="font-bold text-xl mb-2">{item.nama}</div>
+                <p className="text-gray-700 text-base">{item.alamat}</p>
             </div>
         </div>
     );

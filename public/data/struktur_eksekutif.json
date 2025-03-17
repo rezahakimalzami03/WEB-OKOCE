@@ -1,0 +1,38 @@
+[
+    {
+        "id": 1,
+        "nama": "Vicka Kuen",
+        "jabatan": "Eksekutif Humas dan Promosi",
+        "foto": "/images/vicka.webp"
+    },
+    {
+        "id": 2,
+        "nama": "Restu Meliani",
+        "jabatan": "Eksekutif Hukum dan Legal",
+        "foto": "/images/restu.webp"
+    },
+    {
+        "id": 3,
+        "nama": "Rahma Destira",
+        "jabatan": "Eksekutif Data dan Riset",
+        "foto": "/images/rahma.webp"
+    },
+    {
+        "id": 4,
+        "nama": "Kevin Arthadia",
+        "jabatan": "Eksekutif Program",
+        "foto": "/images/kevin.webp"
+    },
+    {
+        "id": 5,
+        "nama": "Farah Dila",
+        "jabatan": "Personal Assistant Sekretaris Jendral",
+        "foto": "/images/farah.webp"
+    },
+    {
+        "id": 6,
+        "nama": "Ane Ardianti",
+        "jabatan": "Personal Assistant Ketua Umum",
+        "foto": "/images/anne.webp"
+    }
+]

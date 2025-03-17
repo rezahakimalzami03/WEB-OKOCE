@@ -31,7 +31,7 @@ const JobCard = ({ logo, title, location, job_system, category, onClick }) => {
 };
 
 const JobList = ({ onJobClick }) => {
-    const [datas, setData] = useState([]);
+    const [data, setData] = useState([]);
 
     useEffect(() => {
         fetchDataPeluangUsaha();
@@ -39,19 +39,12 @@ const JobList = ({ onJobClick }) => {
 
     const fetchDataPeluangUsaha = async () => {
         try {
-            const response = await fetch(
-                'https://cms-okoce-6629e06db84b.herokuapp.com/api/peluang-usahas?populate=*'
-            );
+            const response = await fetch('/data/peluang_usaha.json'); // Mengambil data dari folder public
             if (!response.ok) {
                 throw new Error('Gagal mengambil data peluang usaha');
             }
             const data = await response.json();
-            const PelUsData = data.data.map((item) => ({
-                ...item,
-                logo: item.attributes?.foto_usaha?.data?.[0]?.attributes?.url || null,
-            }));
-            PelUsData.sort((a, b) => a.id - b.id);
-            setData(PelUsData);
+            setData(data); // Langsung set data tanpa transformasi tambahan
         } catch (error) {
             console.error('Error fetching peluang usaha:', error);
             setData([]);
@@ -60,15 +53,15 @@ const JobList = ({ onJobClick }) => {
 
     return (
         <div>
-            {datas.map((data) => (
+            {data.map((data) => (
                 <div className="mt-0" key={data.id}>
                     <div className="space-y-4 mt-5">
                         <JobCard
-                            logo={data.attributes?.foto_usaha?.data[0]?.attributes.url}
-                            title={data.attributes?.judul_usaha}
-                            location={data.attributes?.lokasi_usaha}
-                            job_system={data.attributes?.sistem_kerja}
-                            category={data.attributes?.kategori_usaha}
+                            logo={data.foto_usaha}
+                            title={data.judul_usaha}
+                            location={data.lokasi_usaha}
+                            job_system={data.sistem_kerja}
+                            category={data.kategori_usaha}
                             onClick={() => onJobClick(data.id)}
                         />
                     </div>
@@ -90,17 +83,26 @@ const PeluangUsaha = () => {
 
     const fetchJobDetails = async (id) => {
         try {
-            const response = await fetch(`https://cms-okoce-6629e06db84b.herokuapp.com/api/peluang-usahas/${id}?populate=*`);
+            const response = await fetch('/data/peluang_usaha.json'); // Mengambil data dari file lokal
             if (!response.ok) {
                 throw new Error('Gagal mengambil detail peluang usaha');
             }
             const data = await response.json();
-            setJobDetails(data.data);
+
+            // Cari data dengan ID yang sesuai
+            const selectedJob = data.find(item => item.id === id);
+
+            if (!selectedJob) {
+                throw new Error('Data tidak ditemukan');
+            }
+
+            setJobDetails(selectedJob);
         } catch (error) {
             console.error('Error fetching peluang usaha details:', error);
             setJobDetails(null);
         }
     };
+
 
     const handleJobClick = (id) => {
         setSelectedJobId(id);
@@ -126,32 +128,32 @@ const PeluangUsaha = () => {
                             <div className="mobile:ml-0 mobile:px-4 lg:mt-10 lg:ml-2 lg:pr-16 lg:pl-14">
                                 <img
                                     src={
-                                        jobDetails.attributes?.foto_usaha?.data?.[0]?.attributes?.url
+                                        jobDetails.foto_usaha
                                     }
-                                    alt={jobDetails.attributes.judul_usaha || 'Peluang Usaha'}
+                                    alt={jobDetails.judul_usaha || 'Peluang Usaha'}
                                     className="w-full object-cover rounded-full mobile:h-56 mobile:mt-8 lg:h-96"
                                 />
 
-                                <h3 className="text-3xl mt-16 ml-1 font-bold text-center text-black mb-4">{jobDetails.attributes.judul_usaha}</h3>
+                                <h3 className="text-3xl mt-16 ml-1 font-bold text-center text-black mb-4">{jobDetails.judul_usaha}</h3>
                                 <p className="text-lg mt-3 ml-1 font-normal text-black">Perkumpulan Gerakan OK OCE</p>
-                                <p className="text-lg ml-1 font-normal text-black">{jobDetails.attributes.lokasi_usaha}</p>
-                                <p className="text-lg mt-2 ml-1 font-normal text-black"><span className="font-bold">Kategori Usaha : </span>{jobDetails.attributes.kategori_usaha}</p>
-                                <p className="text-lg ml-1 font-normal text-black mb-4"><span className="font-bold">Sistem Kerja : </span>{jobDetails.attributes.sistem_kerja}</p>
+                                <p className="text-lg ml-1 font-normal text-black">{jobDetails.lokasi_usaha}</p>
+                                <p className="text-lg mt-2 ml-1 font-normal text-black"><span className="font-bold">Kategori Usaha : </span>{jobDetails.kategori_usaha}</p>
+                                <p className="text-lg ml-1 font-normal text-black mb-4"><span className="font-bold">Sistem Kerja : </span>{jobDetails.sistem_kerja}</p>
                                 <div className="w-full mt-10 mr-32 mb-10">
                                     <h1 className="text-2xl text-black font-bold">Rincian Kegiatan</h1>
-                                    <h2 className="mt-3 font-medium text-black text-lg text-justify">{jobDetails.attributes.tentang_program}</h2>
+                                    <h2 className="mt-3 font-medium text-black text-lg text-justify">{jobDetails.tentang_program}</h2>
                                 </div>
                                 <div className="w-full mt-10 mr-32 mb-10">
                                     <h1 className="text-2xl text-black font-bold">Deskripsi Usaha</h1>
-                                    <h2 className="mt-3 font-medium text-black text-lg text-justify">{jobDetails.attributes.jobdesc_usaha}</h2>
+                                    <h2 className="mt-3 font-medium text-black text-lg text-justify">{jobDetails.jobdesc_usaha}</h2>
                                 </div>
                                 <div className="w-full mt-10 mr-32 mb-10">
                                     <h1 className="text-2xl text-black font-bold">Kualifikasi</h1>
-                                    <h2 className="mt-3 font-medium text-black text-lg text-justify">{jobDetails.attributes.kriteria_usaha}</h2>
+                                    <h2 className="mt-3 font-medium text-black text-lg text-justify">{jobDetails.kriteria_usaha}</h2>
                                 </div>
                                 <div className="w-full mt-10 mr-32 mb-10">
                                     <h1 className="text-2xl text-black font-bold">Benefit</h1>
-                                    <h2 className="mt-3 font-medium text-black text-lg text-justify">{jobDetails.attributes.benefit_program}</h2>
+                                    <h2 className="mt-3 font-medium text-black text-lg text-justify">{jobDetails.benefit_program}</h2>
                                 </div>
                                 <a href="#">
                                     <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-lg px-5 py-2.5 me-2 mb-10 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Daftar Sekarang</button>
